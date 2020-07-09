@@ -1,3 +1,7 @@
-img {
+.new:hover
+{
+    box-shadow:3px 3px 20px 0px rgba(50, 50, 50, 0.5);
+    transition: 0.7s;
+    border-radius: 10px;
 }
 
