@@ -9,6 +9,15 @@
     background-color: #f5f2ea;
     /*border-radius: 10px;*/
 }
+.fullnew
+{
+    background-color: #f5f2ea;
+    box-shadow:3px 3px 20px 0px rgba(50, 50, 50, 0.5);
+}
+.img-center
+{
+    margin: 0 auto;
+}
 a, h1, h2, h3, h4, h5, h6
 {
     color: #f3f3f0;
@@ -41,6 +50,10 @@ a:hover
 {
     color: #313131;
 }
+.mybg0
+{
+    background-color: #f5f2ea;
+}
 .mybg1
 {
     background-color: #f3f3f0;
@@ -71,6 +84,13 @@ a:hover
     height: 10px;
     position: absolute;
     bottom: 5px;
+    width: 100%;
+    align-content: center;
+    justify-content: space-between;
+}
+.headernews
+{
+    height: 10px;
     width: 100%;
     align-content: center;
     justify-content: space-between;
