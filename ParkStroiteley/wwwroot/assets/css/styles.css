@@ -1,3 +1,16 @@
+.cookie
+{
+    position: fixed;
+    bottom: 0;
+    display: none;    
+    width: 100%;
+}
+.cookie a
+{
+    /*border: 1px dashed white;
+    border-radius: 5px;
+    cursor: pointer;*/
+}
 .new:hover
 {
     box-shadow:3px 3px 20px 0px rgba(50, 50, 50, 0.5);
@@ -12,7 +25,7 @@
 .fullnew
 {
     background-color: #f5f2ea;
-    box-shadow:3px 3px 20px 0px rgba(50, 50, 50, 0.5);
+    box-shadow:3px 3px 20px 0px rgba(27, 26, 26, 0.5);
 }
 .img-center
 {
