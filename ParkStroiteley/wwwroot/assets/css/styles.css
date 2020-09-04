@@ -1,31 +1,35 @@
+.myshadow
+{
+    box-shadow:0 0 20px 0px rgba(27, 26, 26, 0.5);
+}
 .cookie
 {
     position: fixed;
     bottom: 0;
     display: none;    
     width: 100%;
+    z-index: 9999;
+    box-shadow:0 0 20px 0px rgba(27, 26, 26, 0.5);
 }
-.cookie a
+.navbarlink
 {
-    /*border: 1px dashed white;
-    border-radius: 5px;
-    cursor: pointer;*/
+    line-height: 60px;
+    padding-left: 8px;
 }
 .new:hover
 {
-    box-shadow:3px 3px 20px 0px rgba(50, 50, 50, 0.5);
+    box-shadow:0 0 20px 0px rgba(50, 50, 50, 0.5);
     transition: 0.7s;
-    
 }
 .new
 {
     background-color: #f5f2ea;
-    /*border-radius: 10px;*/
+    box-shadow:0 0 10px 0px rgba(50, 50, 50, 0.5);
 }
 .fullnew
 {
     background-color: #f5f2ea;
-    box-shadow:3px 3px 20px 0px rgba(27, 26, 26, 0.5);
+    box-shadow:0 0 20px 0px rgba(27, 26, 26, 0.5);
 }
 .img-center
 {
