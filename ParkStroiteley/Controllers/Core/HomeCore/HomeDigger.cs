@@ -8,7 +8,7 @@ namespace ParkStroiteley.Controllers.Core.HomeCore
     /// <summary>
     /// Класс для хранения запросов к базе данных посредство LINQ
     /// </summary>
-    public class HomeCore
+    public class HomeDigger
     {
     }
 }
