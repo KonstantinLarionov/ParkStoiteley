@@ -9,6 +9,56 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\assets\bootstrap\js\bootstrap.min.js" />
+    <Content Remove="wwwroot\assets\img\bannerHeader.jpg" />
+    <Content Remove="wwwroot\assets\img\Парк_строителей_логотип.png" />
+    <Content Remove="wwwroot\assets\img\Парк_строителей_логотип_вместе.png" />
+    <Content Remove="wwwroot\assets\img\Парк_строителей_логотип_отдельно.png" />
+    <Content Remove="wwwroot\assets\img\Парк_строителей_логотип_текст.png" />
+    <Content Remove="wwwroot\assets\js\jquery.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\bootstrap\js\bootstrap.min.js" />
+    <None Include="wwwroot\assets\fontawesome\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\assets\fontawesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\assets\fontawesome\less\animated.less" />
+    <None Include="wwwroot\assets\fontawesome\less\bordered-pulled.less" />
+    <None Include="wwwroot\assets\fontawesome\less\core.less" />
+    <None Include="wwwroot\assets\fontawesome\less\fixed-width.less" />
+    <None Include="wwwroot\assets\fontawesome\less\font-awesome.less" />
+    <None Include="wwwroot\assets\fontawesome\less\icons.less" />
+    <None Include="wwwroot\assets\fontawesome\less\larger.less" />
+    <None Include="wwwroot\assets\fontawesome\less\list.less" />
+    <None Include="wwwroot\assets\fontawesome\less\mixins.less" />
+    <None Include="wwwroot\assets\fontawesome\less\path.less" />
+    <None Include="wwwroot\assets\fontawesome\less\rotated-flipped.less" />
+    <None Include="wwwroot\assets\fontawesome\less\screen-reader.less" />
+    <None Include="wwwroot\assets\fontawesome\less\stacked.less" />
+    <None Include="wwwroot\assets\fontawesome\less\variables.less" />
+    <None Include="wwwroot\assets\fontawesome\scss\font-awesome.scss" />
+    <None Include="wwwroot\assets\fontawesome\scss\_animated.scss" />
+    <None Include="wwwroot\assets\fontawesome\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\assets\fontawesome\scss\_core.scss" />
+    <None Include="wwwroot\assets\fontawesome\scss\_fixed-width.scss" />
+    <None Include="wwwroot\assets\fontawesome\scss\_icons.scss" />
+    <None Include="wwwroot\assets\fontawesome\scss\_larger.scss" />
+    <None Include="wwwroot\assets\fontawesome\scss\_list.scss" />
+    <None Include="wwwroot\assets\fontawesome\scss\_mixins.scss" />
+    <None Include="wwwroot\assets\fontawesome\scss\_path.scss" />
+    <None Include="wwwroot\assets\fontawesome\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\assets\fontawesome\scss\_screen-reader.scss" />
+    <None Include="wwwroot\assets\fontawesome\scss\_stacked.scss" />
+    <None Include="wwwroot\assets\fontawesome\scss\_variables.scss" />
+    <None Include="wwwroot\assets\img\bannerHeader.jpg" />
+    <None Include="wwwroot\assets\img\Парк_строителей_логотип.png" />
+    <None Include="wwwroot\assets\img\Парк_строителей_логотип_вместе.png" />
+    <None Include="wwwroot\assets\img\Парк_строителей_логотип_отдельно.png" />
+    <None Include="wwwroot\assets\img\Парк_строителей_логотип_текст.png" />
+    <None Include="wwwroot\assets\js\jquery.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">

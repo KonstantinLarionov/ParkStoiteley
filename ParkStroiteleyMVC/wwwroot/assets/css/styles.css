@@ -1,0 +1,175 @@
+.fade-in {
+    animation: fadeIn ease 10s;
+    -webkit-animation: fadeIn ease 10s;
+    -moz-animation: fadeIn ease 10s;
+    -o-animation: fadeIn ease 10s;
+    -ms-animation: fadeIn ease 10s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+.myshadow
+{
+    box-shadow:0 0 20px 0px rgba(27, 26, 26, 0.5);
+}
+.cookie
+{
+    position: fixed;
+    bottom: 0;
+    display: none;    
+    width: 100%;
+    z-index: 9999;
+    box-shadow:0 0 20px 0px rgba(27, 26, 26, 0.5);
+}
+.navbarlink
+{
+    line-height: 60px;
+    padding-left: 8px;
+}
+.new:hover
+{
+    box-shadow:0 0 20px 0px rgba(50, 50, 50, 0.5);
+    transition: 0.7s;
+}
+.new
+{
+    background-color: #f5f2ea;
+    box-shadow:0 0 10px 0px rgba(50, 50, 50, 0.5);
+}
+.fullnew
+{
+    background-color: #f5f2ea;
+    box-shadow:0 0 20px 0px rgba(27, 26, 26, 0.5);
+}
+.img-center
+{
+    margin: 0 auto;
+}
+a, h1, h2, h3, h4, h5, h6
+{
+    color: #313131;
+}
+a:hover
+{
+    color: #3ab75c; 
+}
+.mycol0
+{
+    color: #f5f2ea;
+}
+.mycol1
+{
+    color: #f3f3f0;
+}
+.mycol2
+{
+    color: #e2f7e2;
+}
+.mycol3
+{
+    color: #f4e8e6;
+}
+.mycol4
+{
+    color: #3ab75c;
+}
+.mycol5
+{
+    color: #00334e;
+}
+.mycol6
+{
+    color: #313131;
+}
+.mybg0
+{
+    background-color: #f5f2ea;
+}
+.mybg1
+{
+    background-color: #f3f3f0;
+}
+
+.mybg2
+{
+    background-color: #e2f7e2;
+}
+.mybg3
+{
+    background-color: #f4e8e6;
+}
+.mybg4
+{
+    background-color: #3ab75c;
+}
+.mybg5
+{
+    background-color: #00334e;
+}
+.mybg6
+{
+    background-color: #313131;
+}
+.footernews
+{
+    height: 10px;
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    align-content: center;
+    justify-content: space-between;
+}
+.headernews
+{
+    height: 10px;
+    width: 100%;
+    align-content: center;
+    justify-content: space-between;
+}
