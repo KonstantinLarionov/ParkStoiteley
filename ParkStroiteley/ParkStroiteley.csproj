@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\assets\img\Парк_строителей_логотип.png" />
+    <Content Remove="wwwroot\assets\img\Парк_строителей_логотип_вместе.png" />
+    <Content Remove="wwwroot\assets\img\Парк_строителей_логотип_отдельно.png" />
+    <Content Remove="wwwroot\assets\img\Парк_строителей_логотип_текст.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Backend\readme.txt" />
     <None Remove="Design\readme.txt" />
   </ItemGroup>
@@ -22,6 +29,10 @@
 
   <ItemGroup>
     <None Include="wwwroot\assets\bootstrap\js\bootstrap.min.js" />
+    <None Include="wwwroot\assets\img\Парк_строителей_логотип.png" />
+    <None Include="wwwroot\assets\img\Парк_строителей_логотип_вместе.png" />
+    <None Include="wwwroot\assets\img\Парк_строителей_логотип_отдельно.png" />
+    <None Include="wwwroot\assets\img\Парк_строителей_логотип_текст.png" />
     <None Include="wwwroot\assets\js\jquery.min.js" />
   </ItemGroup>
 
