@@ -16,16 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Backend\readme.txt" />
-    <None Remove="Design\readme.txt" />
+    <None Remove="Assets\readme.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Backend\readme.txt">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Design\readme.txt">
+    <Content Include="Assets\readme.txt">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
@@ -41,10 +36,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Build\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
@@ -53,5 +44,7 @@
     </PackageReference>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.0.0" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="https://bucklescript.github.io/bucklescript/docson/build-schema.json" /></VisualStudio></ProjectExtensions>
 
 </Project>
