@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>Build\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <Content Remove="wwwroot\assets\img\Парк_строителей_логотип.png" />
     <Content Remove="wwwroot\assets\img\Парк_строителей_логотип_вместе.png" />
@@ -34,6 +38,20 @@
     <None Include="wwwroot\assets\img\Парк_строителей_логотип_отдельно.png" />
     <None Include="wwwroot\assets\img\Парк_строителей_логотип_текст.png" />
     <None Include="wwwroot\assets\js\jquery.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Build\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.0.0" />
   </ItemGroup>
 
 </Project>
