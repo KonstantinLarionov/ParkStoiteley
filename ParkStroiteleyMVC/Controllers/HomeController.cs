@@ -29,6 +29,5 @@ namespace ParkStroiteleyMVC.Controllers
         {
             return View();
         }
-
     }
 }
