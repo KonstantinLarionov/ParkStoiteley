@@ -16,8 +16,7 @@ namespace ParkStroiteleyMVC.Models.ObjectDTO
         public NewsType Type { get; set; }
         public DateTime DatePublish { get; set; }
         public DateTime? DateDelete { get; set; }
-        public List<ParagraphDTO> ParagraphBlocks { get; set; }
-        public List<ImageDTO> ImageBlocks { get; set; }
+        public List<BlockDTO> Blocks { get; set; }
         public List<CommentDTO> Comments { get; set; }
         public int CountLikes { get; set; }
         public int CountDislikes { get; set; }

@@ -54,7 +54,7 @@ namespace ParkStroiteleyMVC
             services.AddDistributedMemoryCache();
             services.AddHttpContextAccessor();
             services.AddControllers();
-            services.AddDbContextPool<HomeContext>(
+            services.AddDbContextPool<DBContext>(
                options => options.UseMySql(ConfigDatabase.ConnectionString,
                mySqlOptions =>
                {

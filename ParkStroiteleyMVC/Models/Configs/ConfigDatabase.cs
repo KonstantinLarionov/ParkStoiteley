@@ -7,6 +7,6 @@ namespace ParkStroiteleyMVC.Models.Configs
 {
     public static class ConfigDatabase
     {
-        public static readonly string ConnectionString = "Server=localhost;Database=parkDb;User=parkUser;Password=123321;";
+        public static readonly string ConnectionString = "Server=localhost;Database=ParkDB;User=User;Password=Lollipop_321123?;";
     }
 }

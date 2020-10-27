@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ParkStroiteleyMVC.Models;
 using ParkStroiteleyMVC.Models.ObjectDTO;
+using ParkStroiteleyMVC.Controllers.Core.Interface;
 
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
 {
     public struct HomeDigger : IDigger
     {
-        private HomeContext Context;
+        private DBContext Context;
         public bool IsDispose { get; set; }
 
 
@@ -24,7 +25,7 @@ namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
         #region [IDisposable]
         public void Connect()
         {
-            Context = new HomeContext(new DbContextOptions<HomeContext>());
+            Context = new DBContext(new DbContextOptions<DBContext>());
             IsDispose = false;
         }
 

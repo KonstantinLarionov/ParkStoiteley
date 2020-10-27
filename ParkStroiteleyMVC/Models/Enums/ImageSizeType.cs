@@ -8,6 +8,8 @@ namespace ParkStroiteleyMVC.Models.Enums
 {
     public enum ImageSizeType
     {
+        [EnumMember(Value = "Отсутствует")]
+        None,
         [EnumMember(Value = "Большая")]
         Large,
         [EnumMember(Value = "Средняя")]
