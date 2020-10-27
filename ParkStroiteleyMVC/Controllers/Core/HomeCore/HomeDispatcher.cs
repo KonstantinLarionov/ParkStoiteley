@@ -32,7 +32,8 @@ namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
                 Digger.GetContacts() ?? new Models.ObjectDTO.ContactsDTO() { PhoneNumber = +7000000 } );
             try
             {
-                //IndexModel
+                model.News = Digger.GetNewsPreview();
+                model.Gallery = Digger.GetGalleryPreview();
             }
             catch (Exception ex)
             {

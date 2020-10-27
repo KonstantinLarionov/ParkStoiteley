@@ -17,6 +17,7 @@ namespace ParkStroiteleyMVC.Models
         public DbSet<NewDTO> News { get; set; }
         public DbSet<NewDTO> Events { get; set; }
         public DbSet<ContactsDTO> Contacts { get; set; }
+        public DbSet<GalleryDTO> Gallery { get; set; }
 
         public DBContext(DbContextOptions options) : base(options)
         {

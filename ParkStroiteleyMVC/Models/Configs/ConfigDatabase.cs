@@ -10,7 +10,7 @@ namespace ParkStroiteleyMVC.Models.Configs
         /// <summary>
         /// DONT TOUCH IF DEBUG AND DEVELOP
         /// </summary>
-        public static readonly string ConnectionString = $"Server=localhost;Database={DB};User={UserDB};Password={PasswordDB};";
+        public static readonly string ConnectionString = $"Server=localhost;Database=ParkDB;User=UserPinguin;Password=KinderPingui321123;";
         /// <summary>
         /// DONT TOUCH IF DEBUG AND DEVELOP
         /// </summary>

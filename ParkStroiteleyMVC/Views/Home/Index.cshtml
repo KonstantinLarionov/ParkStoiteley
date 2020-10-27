@@ -1,22 +1,25 @@
 ﻿@{ Layout = "_Layout"; }
 @model ParkStroiteleyMVC.Models.ModelPages.IndexModel;
 @using ParkStroiteleyMVC.Models.Extensions;
-<div class="news-wrapper">
+
+<div class="container">
     <div class="row">
-        <div class="col pb-4">
+        <div class="col pb-4 mt-3">
             <h2>Последние новости парка</h2>
         </div>
     </div>
-<div class="container">
-    @for (int i = 0; Model.News != null && i < Model.News.Count; i ++)
+    @for (int i = 0; Model.News != null && i < Model.News.Count; i++)
     {
+        if (Model.News[i].Blocks == null)
+            continue;
+
         <div class="row new pt-3 pb-3 mb-3">
             <div class="col-md-4">
-                <img class="img-fluid" src="@Model.News[i].Blocks[0].ImageURL">
+                <img class="img-fluid" width="640" height="480" src="@Model.News[i].Blocks[0]?.ImageURL.GetFullPathImg(Model.News[i].Blocks[0].ImageSize)">
             </div>
             <div class="col-md-8 pt-2" style="padding-bottom: 30px;">
                 <p> @Model.News[i].Blocks[0].Text?.ToPreview()</p>
-                <a class="mycol5" href="cardNews.html?#content">Читать дальше</a>
+                <a class="mycol5" href="/Home/CardNews?id=@Model.News[i].Id">Читать дальше</a>
                 <div class="row footernews">
                     <span class="pl-3">@Model.News[i].DatePublish</span>
                     <span class="pr-3"> <span class="badge badge-primary">@Model.News[i].Type.GetEnumMemberAttributeValue()</span></span>
@@ -24,5 +27,30 @@
             </div>
         </div>
     }
+    <div class="row">
+        <div class="col pb-4 mt-3">
+            <h2>Последние фото парка</h2>
+        </div>
+    </div>
+    <div class="row">
+
+            <div align="center">
+                <button class="btn btn-default filter-button" data-filter="all">Все</button>
+                <button class="btn btn-default filter-button" data-filter="Nature">Природа</button>
+                <button class="btn btn-default filter-button" data-filter="Bird">Птицы</button>
+                <button class="btn btn-default filter-button" data-filter="Landscape">Пейзаж</button>
+                <button class="btn btn-default filter-button" data-filter="Sport">Спорт</button>
+                <button class="btn btn-default filter-button" data-filter="Relax">Отдых</button>
+            </div>
+        </div>
+    <div class="row">
+        <br />
+        @foreach (var img in Model.Gallery)
+        {
+            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter @img.Type.GetEnumMemberAttributeValue()">
+                <img src="@img.NameFile.GetFullPathImg(img.Size)" class="img-responsive">
+            </div>
+        }
+    </div>
     </div>
 </div>

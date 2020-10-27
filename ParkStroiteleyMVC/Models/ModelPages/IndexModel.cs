@@ -15,5 +15,6 @@ namespace ParkStroiteleyMVC.Models.ModelPages
         { }
 
         public List<NewDTO> News { get; set; } = new List<NewDTO>();
+        public List<GalleryDTO> Gallery { get; set; } = new List<GalleryDTO>();
     }
 }

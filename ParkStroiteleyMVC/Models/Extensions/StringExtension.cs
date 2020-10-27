@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ParkStroiteleyMVC.Models.Configs;
+using ParkStroiteleyMVC.Models.Enums;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,13 +14,12 @@ namespace ParkStroiteleyMVC.Models.Extensions
         {
             if (str.Length > 95)
             {
-                var cstr = str.Take(95).ToList(); cstr.Add('.'); cstr.Add('.'); cstr.Add('.');
-
-                return cstr.ToString();
+                str = str.Substring(0, 98) + ". . .";
+                return str;
             }
             else
             {
-                return str + "...";
+                return str + ". . .";
             }
         }
         public static int ToInt(this string str)
@@ -41,6 +43,15 @@ namespace ParkStroiteleyMVC.Models.Extensions
             {
                 return 0;
             }
+        }
+
+        public static string GetFullPathImg(this string nameImg, ImageSizeType sizeType)
+        {
+            return $"{ConfigApp.AppImageMainDirectory}{sizeType.GetEnumMemberAttributeValue()}/{nameImg}";
+        }
+        public static string GetFullPathGallery(this string nameImg, ImageSizeType sizeType)
+        {
+            return $"{ConfigApp.AppGalleryMainDirectory}{sizeType.GetEnumMemberAttributeValue()}/{nameImg}";
         }
     }
 }
