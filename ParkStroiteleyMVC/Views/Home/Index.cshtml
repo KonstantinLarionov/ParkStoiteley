@@ -1,32 +1,29 @@
 ﻿@{ Layout = "_Layout"; }
 @model ParkStroiteleyMVC.Models.ModelPages.IndexModel;
 @using ParkStroiteleyMVC.Models.Extensions;
+@using ParkStroiteleyMVC.Models.Extensions;
 <div class="news-wrapper">
     <div class="row">
         <div class="col pb-4">
             <h2>Последние новости парка</h2>
         </div>
     </div>
-    @for (int i = 0; Model.News != null && i < Model.News.Count; i += 4)
+<div class="container">
+    @for (int i = 0; Model.News != null && i < Model.News.Count; i ++)
     {
-        <div class="row">
-            @for (int j = 0; j < 4; j++)
-            {
-                <div class="col-md-3 col-ml-12">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="@Model.News[i+j].ImageBlocks[0]?.URL" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">@Model.News[i + j].Header</h5>
-                            <p class="card-text">
-                              @Model.News[i + j].ParagraphBlocks[0].Text?.ToPreview();
-                            </p>
-                            <a href="#" class="btn btn-primary">Прочитать</a>
-                            <span style="margin-left: 5%;" class="badge badge-primary">Ежедневная</span>
-                        </div>
-                    </div>
+        <div class="row new pt-3 pb-3 mb-3">
+            <div class="col-md-4">
+                <img class="img-fluid" src="">
+            </div>
+            <div class="col-md-8 pt-2" style="padding-bottom: 30px;">
+                <p> @Model.News[i].ParagraphBlocks[0].Text?.ToPreview()</p>
+                <a class="mycol5" href="cardNews.html?#content">Читать дальше</a>
+                <div class="row footernews">
+                    <span class="pl-3">@Model.News[i].DatePublish</span>
+                    <span class="pr-3"> <span class="badge badge-primary">@Model.News[i].Type.GetEnumMemberAttributeValue()</span></span>
                 </div>
-
-            }
+            </div>
         </div>
     }
-</div>           
+    </div>
+</div>
