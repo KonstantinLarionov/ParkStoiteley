@@ -28,7 +28,10 @@ namespace ParkStroiteleyMVC.Controllers
 
             _logger = logger;
         }
-
+        public IActionResult AboutCookie()
+        {
+            return View();
+        }
         public IActionResult About()
         {
             return View(Dispatcher.About);

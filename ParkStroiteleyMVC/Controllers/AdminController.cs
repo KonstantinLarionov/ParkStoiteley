@@ -27,16 +27,27 @@ namespace ParkStroiteleyMVC.Controllers
 
             _logger = logger;
         }
-
-        public IActionResult About()
+        public IActionResult Login()
         {
             return View();
         }
         public IActionResult Index()
         {
-            return View(Dispatcher.Index);
+            return View();
+        }
+        public IActionResult Users()
+        {
+            return View();
         }
         public IActionResult News()
+        {
+            return View();
+        }
+        public IActionResult Events()
+        {
+            return View();
+        }
+        public IActionResult Contacts()
         {
             return View();
         }
