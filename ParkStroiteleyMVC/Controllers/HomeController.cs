@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 using ParkStroiteleyMVC.Controllers.Core.Interface;
+using ParkStroiteleyMVC.Services;
 
 namespace ParkStroiteleyMVC.Controllers
 {
@@ -30,11 +31,40 @@ namespace ParkStroiteleyMVC.Controllers
 
         public IActionResult About()
         {
-            return View();
+            return View(Dispatcher.About);
         }
         public IActionResult Index()
         {
             return View(Dispatcher.Index);
         }
+        public IActionResult Map()
+        {
+            return View(Dispatcher.Map);
+        }
+        public IActionResult News()
+        {
+            return View(Dispatcher.News);
+        }
+        public IActionResult CardNews(int id)
+        {
+            Dispatcher.CardNewsId = id;
+            return View(Dispatcher.CardNews);
+        }
+        [HttpGet]
+        public JsonResult NewsLazy(int lastId)
+        {
+            var res = Dispatcher.GetNewsLazy(lastId);
+            return new JsonResult(res);
+        }
+
+        #region [Services]
+        public IActionResult SendMessage(string email, string message, string name)
+        {
+            EmailService service = new EmailService();
+            service.SendEmailAsync("orsk.park@yandex.ru", email,$"Сообщение от {name}:{Environment.NewLine}{message}").GetAwaiter().GetResult();
+
+            return RedirectToRoute(new { controller = "Home", action = "Index" });
+        }
+        #endregion
     }
 }

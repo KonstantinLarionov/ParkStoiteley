@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using ParkStroiteleyMVC.Models.ModelPages;
+using ParkStroiteleyMVC.Models.ObjectDTO;
 
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,13 @@ namespace ParkStroiteleyMVC.Controllers.Core.Interface
     public interface IHomeDispatcher
     {
         public IndexModel Index { get; }
+        public AboutModel About{ get; }
+        public MapModel Map { get; }
+
+        public NewsModel News { get; }
+        public List<NewDTO> GetNewsLazy(int lastID);
+
+        public int CardNewsId { get; set; }
+        public CardNewsModel CardNews { get; }
     }
 }

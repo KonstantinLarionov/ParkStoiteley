@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ParkStroiteleyMVC.Models.Enums;
 
 namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
 {
@@ -47,6 +48,77 @@ namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
             gallery.Reverse();
 
             return gallery;
+        }
+        public List<NewDTO> GetNewsStart()
+        {
+            List<NewDTO> news = null;
+            news = Context.News
+                .OrderByDescending(x => x.Id)
+                .Take(20)
+                .Include(x => x.Blocks)
+                .ToList();
+            return news;
+        }
+
+        public List<NewDTO> GetNewsAfterLastId(int id)
+        {
+            List<NewDTO> news = null;
+            news = Context.News
+                .Where(x => x.Id < id)
+                .OrderByDescending(x => x.Id)
+                .Take(20)
+                .Include(x => x.Blocks)
+                .ToList();
+            return news;
+        }
+
+        public List<NewDTO> GetNews(DateTime start, DateTime end, NewsType? type)
+        {
+            List<NewDTO> news = null;
+            if (type.HasValue)
+            {
+                news = Context.News
+                    .Where(x => x.DatePublish >= start && x.DatePublish <= end && x.Type == type.Value)
+                    .OrderByDescending(x=>x.Id)
+                    .Include(x => x.Blocks)
+                    .ToList();
+            }
+            else 
+            {
+                news = Context.News
+                    .Where(x => x.DatePublish >= start && x.DatePublish <= end)
+                    .OrderByDescending(x=>x.Id)
+                    .Include(x => x.Blocks)
+                    .ToList();
+            }
+            return news;
+        }
+        public NewDTO GetOneNews(int id)
+        {
+            NewDTO @new = null;
+            @new = Context.News.Where(x => x.Id == id).Include(x => x.Blocks).Include(x => x.Comments).FirstOrDefault();
+            return @new;
+        }
+
+        public void SetCommentIntoNews(int id, string message, string name)
+        {
+            var news = Context.News.Where(x => x.Id == id).Include(x=>x.Comments).FirstOrDefault();
+            news.Comments.Add(new CommentDTO() { DateAdd = DateTime.Now, Comment = message, UserName = name });
+            Context.SaveChanges();
+        }
+
+        public void SetLike(int id)
+        {
+            var news = Context.News.Where(x => x.Id == id).FirstOrDefault();
+            news.CountLikes++;
+            Context.SaveChanges();
+        }
+
+        public void SetDislike(int id)
+        {
+            var news = Context.News.Where(x => x.Id == id).FirstOrDefault();
+            news.CountDislikes++;
+            Context.SaveChanges();
         }
 
         #region [IDisposable]

@@ -10,6 +10,7 @@ namespace ParkStroiteleyMVC.Models.ObjectDTO
         public int Id { get; set; }
         public string MainURLSite { get; set; }
         public int PhoneNumber { get; set; }
+        public int PhoneNumberZam { get; set; }
         public string Email { get; set; }
         public string LinkVK { get; set; }
         public string LinkInst { get; set; }
@@ -17,6 +18,7 @@ namespace ParkStroiteleyMVC.Models.ObjectDTO
         public string LinkOK { get; set; }
         public string PhoneWhatsUp { get; set; }
         public string AdministratorFIO { get; set; }
+        public string AdministratorFIOZam { get; set; }
         public string PositionAdmin { get; set; }
     }
 }
