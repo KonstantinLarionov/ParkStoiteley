@@ -308,7 +308,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Admin\" />
     <Folder Include="wwwroot\content\gallery\" />
   </ItemGroup>
 

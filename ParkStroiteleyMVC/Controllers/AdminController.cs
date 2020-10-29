@@ -36,5 +36,9 @@ namespace ParkStroiteleyMVC.Controllers
         {
             return View(Dispatcher.Index);
         }
+        public IActionResult News()
+        {
+            return View();
+        }
     }
 }
