@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ParkStroiteleyMVC.Models.Enums;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
 {
@@ -25,7 +26,12 @@ namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
             var contacts = Context.Contacts.FirstOrDefault();
             return contacts;
         }
-
+        public void PostComment(int id, string name, string email, string comment)
+        {
+            var news = Context.News.Where(x => x.Id == id).Include(x => x.Comments).FirstOrDefault();
+            news.Comments.Add(new CommentDTO() { Comment = comment, User = new UserDTO() { Email = email }, UserName = name, DateAdd = DateTime.Now  });
+            Context.SaveChanges();
+        }
         public List<NewDTO> GetNewsPreview()
         {
             List<NewDTO> news = null;
@@ -91,6 +97,18 @@ namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
                     .Include(x => x.Blocks)
                     .ToList();
             }
+            return news;
+        }
+        public List<NewDTO> GetNews(int page = 1)
+        {
+            List<NewDTO> news = null;
+            int count = 20;
+            news = Context.News
+                .OrderByDescending(x => x.Id)
+                .Skip((count * page) - count)
+                .Take(count * page)
+                .Include(x => x.Blocks)
+                .ToList();
             return news;
         }
         public NewDTO GetOneNews(int id)

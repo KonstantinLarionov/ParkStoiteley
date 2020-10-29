@@ -16,8 +16,10 @@ namespace ParkStroiteleyMVC.Controllers.Core.Interface
         public AboutModel About{ get; }
         public MapModel Map { get; }
 
+        public int PageNews { get; set; }
         public NewsModel News { get; }
         public List<NewDTO> GetNewsLazy(int lastID);
+        public void PostComment(int id, string name, string email, string message);
 
         public int CardNewsId { get; set; }
         public CardNewsModel CardNews { get; }

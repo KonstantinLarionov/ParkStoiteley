@@ -17,9 +17,10 @@ namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
         public IndexModel Index { get { return CreateIndex(); } }
         public AboutModel About { get { return CreateAbout(); } }
         public MapModel Map { get { return CreateMap(); } }
-        public NewsModel News { get { return CreateNews(); } }
+        public NewsModel News { get { return CreateNews(PageNews); } }
 
         public int CardNewsId { get; set; }
+        public int PageNews { get; set; } 
         public CardNewsModel CardNews { get { return CreateCardNews(); } }
         #endregion
         private Action<string> Logs => Startup.Logs;
@@ -97,7 +98,7 @@ namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
             }
             return model;
         }
-        public NewsModel CreateNews()
+        public NewsModel CreateNews(int page = 1)
         {
             NewsModel model = null;
             try
@@ -106,7 +107,7 @@ namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
                 "НОВОСТИ ПАРКА",
                 "Последние новости и события нашего любимого парка.",
                 Digger.GetContacts() ?? new Models.ObjectDTO.ContactsDTO() { PhoneNumber = +7000000 });
-                model.News = Digger.GetNewsStart();
+                model.News = Digger.GetNews(page);
             }
             catch (Exception ex)
             {
@@ -131,6 +132,11 @@ namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
                 Logs.Invoke($"~~MethodeDispatcher: CreateCardNews {Environment.NewLine}{ex.Message}");
             }
             return model;
+        }
+
+        public void PostComment(int id, string name, string email, string message)
+        {
+            Digger.PostComment(id, name,email,message);
         }
         #endregion
     }

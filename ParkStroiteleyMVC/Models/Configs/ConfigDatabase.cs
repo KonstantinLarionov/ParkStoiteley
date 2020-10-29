@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 
 namespace ParkStroiteleyMVC.Models.Configs
@@ -10,7 +11,13 @@ namespace ParkStroiteleyMVC.Models.Configs
         /// <summary>
         /// DONT TOUCH IF DEBUG AND DEVELOP
         /// </summary>
-        public static readonly string ConnectionString = $"Server=localhost;Database=ParkDB;User=UserPinguin;Password=KinderPingui321123;";
+        public static string ConnectionString
+        {
+            get
+            {
+                return $"Server=localhost;Database={DB};User={UserDB};Password={PasswordDB};";
+            }
+        }
         /// <summary>
         /// DONT TOUCH IF DEBUG AND DEVELOP
         /// </summary>
