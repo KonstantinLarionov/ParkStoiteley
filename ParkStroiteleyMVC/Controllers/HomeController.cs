@@ -44,14 +44,20 @@ namespace ParkStroiteleyMVC.Controllers
         {
             return View(Dispatcher.Map);
         }
-        public IActionResult News()
+        public IActionResult News(int page = 1)
         {
+            Dispatcher.PageNews = page;
             return View(Dispatcher.News);
         }
         public IActionResult CardNews(int id)
         {
             Dispatcher.CardNewsId = id;
             return View(Dispatcher.CardNews);
+        }
+        public void PostComment(int id, string nickname, string email, string comment)
+        {
+            if (comment != "" && comment != null && nickname != "" && nickname != null)
+                Dispatcher.PostComment(id, nickname, email, comment);
         }
         [HttpGet]
         public JsonResult NewsLazy(int lastId)
