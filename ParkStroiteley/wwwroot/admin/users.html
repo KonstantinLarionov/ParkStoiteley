@@ -14,8 +14,16 @@
     <title>Dashboard</title>
 </head>
 <body class="bg-light">
-
-    <nav class="navbar navbar-expand navbar-dark bg-info">
+    <div class="sidebar sidebar-dark btn-dark toggled" style="position: fixed; z-index: 1000; top: 49px;">
+        <ul class="list-unstyled" style="position: sticky;">
+            <li><a href="#"><i class="fa fa-fw fa-flag"></i> Главная</a></li>
+            <li><a href="#"><i class="fa fa-fw fa-user"></i> Пользователи</a></li>
+            <li><a href="#"><i class="fa fa-fw fa-newspaper"></i> Новости</a></li>
+            <li><a href="#"><i class="fa fa-fw fa-edit"></i> Мероприятия</a></li>
+            <li><a href="#"><i class="fa fa-fw fa-table"></i> Контакты</a></li>
+        </ul>
+    </div>
+    <nav class="navbar navbar-expand navbar-dark bg-info sticky-top">
         <a class="sidebar-toggle mr-3" href="#"><i class="fa fa-bars"></i></a>
         <a class="navbar-brand" href="../../">Parkorsk</a>
 
@@ -34,15 +42,6 @@
     </nav>
 
     <div class="d-flex">
-        <div class="sidebar sidebar-dark bg-dark toggled">
-            <ul class="list-unstyled">
-                <li><a href="#"><i class="fa fa-fw fa-flag"></i> Главная</a></li>
-                <li><a href="#"><i class="fa fa-fw fa-user"></i> Пользователи</a></li>
-                <li><a href="#"><i class="fa fa-fw fa-newspaper"></i> Новости</a></li>
-                <li><a href="#"><i class="fa fa-fw fa-edit"></i> Мероприятия</a></li>
-                <li><a href="#"><i class="fa fa-fw fa-table"></i> Контакты</a></li>
-            </ul>
-        </div>
         <div class="p-4" style="max-width: 1200px; margin: 0 auto;">
             <div class="justify-content-between mb-3" style="display: flex;">
                 <p class="ml-1 pl-1">Пользователи</p>          
