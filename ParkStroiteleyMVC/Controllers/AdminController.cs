@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -42,6 +43,27 @@ namespace ParkStroiteleyMVC.Controllers
         public IActionResult News()
         {
             return View();
+        }
+        [HttpPost]
+        public string News(List<IFormFile> images)
+        {
+            var d = HttpContext;
+            if (images != null && images.Count() != 0)
+            {
+                var now = DateTime.Now.ToString("yyyyMMddHHmmss");
+                int i = 0;
+                foreach (var file in images)
+                {
+                    var w = file.FileName.Split('.').Last();
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), now + "_" + i.ToString() + "." + w);
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+                    i++;
+                }
+            }
+            return "okk";
         }
         public IActionResult Events()
         {

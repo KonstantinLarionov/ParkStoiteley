@@ -1,229 +1,53 @@
 ﻿@{ Layout = "_LayoutAdmin"; }
-@*model ParkStroiteleyMVC.Models.ModelPages.IndexModel;*@
-@using ParkStroiteleyMVC.Models.Extensions;
-<div class="d-flex">
-    <div class="p-4" style="max-width: 1200px; margin: 0 auto;">
-        <div class="justify-content-between mb-3" style="display: flex;">
-            <h2 class="ml-1 pl-1">Новости</h2>
+<div class="p-1" style="max-width: 1200px; margin: 0 auto;">
+    <div class="justify-content-between pb-3 pt-3 pl-1 pr-1" style="display: flex;">
+        <h3 class="">Новости</h3>
+        <button class="btn btn-success" onclick="addnew();">&#10010; Новая новость</button>
+    </div>
+    <div class="row m-0">
+
+        <div class="col-xl-4 col-lg-4 col-md-6 p-1">
+            <div class="card">
+                <img class="card-img-top" src="f6.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>15.10.2020</span>
+                        <span>Важное</span>
+                    </div>
+                    <h5 class="card-title text-center">Заголовок новости</h5>
+                    <p class="card-text">
+                        Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
+                    </p>
+                    <button type="button" class="btn btn-success" onclick="editnew(0);">&#9998; Редактировать</button>
+                </div>
+            </div>
         </div>
-        <div class="row m-1">
-            <div class="col-xl-4 col-lg-4 col-md-6 p-1">
-                <div class="card">
-                    <!--<img class="card-img-top" src="f6.jpg" alt="Card image cap">-->
-                    <div class="card-body">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span>15.10.2020</span>
-                            <span>Важное</span>
-                        </div>
-                        <h5 class="card-title text-center">Заголовок новости</h5>
-                        <p class="card-text">
-                            Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
-                        </p>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Редактировать</button>
+        <div class="col-xl-4 col-lg-4 col-md-6 p-1">
+            <div class="card">
+                <img class="card-img-top" src="loft.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>15.10.2020</span>
+                        <span>Важное</span>
                     </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 p-1">
-                <div class="card">
-                    <!--<img class="card-img-top" src="f6.jpg" alt="Card image cap">-->
-                    <div class="card-body">
-                        <div style="display: flex;justify-content: space-between;">
-                            <span>15.10.2020</span>
-                            <span>Важное</span>
-                        </div>
-                        <h5 class="card-title text-center">Заголовок новости</h5>
-                        <p class="card-text">
-                            Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
-                        </p>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Редактировать</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 p-1">
-                <div class="card">
-                    <!--<img class="card-img-top" src="f6.jpg" alt="Card image cap">-->
-                    <div class="card-body">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span>15.10.2020</span>
-                            <span>Важное</span>
-                        </div>
-                        <h5 class="card-title text-center">Заголовок новости</h5>
-                        <p class="card-text">
-                            Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
-                        </p>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Редактировать</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 p-1">
-                <div class="card">
-                    <!--<img class="card-img-top" src="f6.jpg" alt="Card image cap">-->
-                    <div class="card-body">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span>15.10.2020</span>
-                            <span>Важное</span>
-                        </div>
-                        <h5 class="card-title text-center">Заголовок новости</h5>
-                        <p class="card-text">
-                            Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
-                        </p>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Редактировать</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 p-1">
-                <div class="card">
-                    <!--<img class="card-img-top" src="f6.jpg" alt="Card image cap">-->
-                    <div class="card-body">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span>15.10.2020</span>
-                            <span>Важное</span>
-                        </div>
-                        <h5 class="card-title text-center">Заголовок новости</h5>
-                        <p class="card-text">
-                            Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
-                        </p>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Редактировать</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 p-1">
-                <div class="card">
-                    <!--<img class="card-img-top" src="f6.jpg" alt="Card image cap">-->
-                    <div class="card-body">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span>15.10.2020</span>
-                            <span>Важное</span>
-                        </div>
-                        <h5 class="card-title text-center">Заголовок новости</h5>
-                        <p class="card-text">
-                            Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
-                        </p>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Редактировать</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 p-1">
-                <div class="card">
-                    <!--<img class="card-img-top" src="f6.jpg" alt="Card image cap">-->
-                    <div class="card-body">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span>15.10.2020</span>
-                            <span>Важное</span>
-                        </div>
-                        <h5 class="card-title text-center">Заголовок новости</h5>
-                        <p class="card-text">
-                            Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
-                        </p>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Редактировать</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 p-1">
-                <div class="card">
-                    <img class="card-img-top" src="f6.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span>15.10.2020</span>
-                            <span>Важное</span>
-                        </div>
-                        <h5 class="card-title text-center">Заголовок новости</h5>
-                        <p class="card-text">
-                            Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
-                        </p>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Редактировать</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 p-1">
-                <div class="card">
-                    <img class="card-img-top" src="f6.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span>15.10.2020</span>
-                            <span>Важное</span>
-                        </div>
-                        <h5 class="card-title text-center">Заголовок новости</h5>
-                        <p class="card-text">
-                            Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
-                        </p>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Редактировать</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 p-1">
-                <div class="card">
-                    <img class="card-img-top" src="f6.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span>15.10.2020</span>
-                            <span>Важное</span>
-                        </div>
-                        <h5 class="card-title text-center">Заголовок новости</h5>
-                        <p class="card-text">
-                            Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
-                        </p>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Редактировать</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 p-1">
-                <div class="card">
-                    <img class="card-img-top" src="f6.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span>15.10.2020</span>
-                            <span>Важное</span>
-                        </div>
-                        <h5 class="card-title text-center">Заголовок новости</h5>
-                        <p class="card-text">
-                            Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
-                        </p>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Редактировать</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 p-1">
-                <div class="card">
-                    <img class="card-img-top" src="f6.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span>15.10.2020</span>
-                            <span>Важное</span>
-                        </div>
-                        <h5 class="card-title text-center">Заголовок новости</h5>
-                        <p class="card-text">
-                            Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
-                        </p>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Редактировать</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 p-1">
-                <div class="card">
-                    <img class="card-img-top" src="f6.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span>15.10.2020</span>
-                            <span>Важное</span>
-                        </div>
-                        <h5 class="card-title text-center">Заголовок новости</h5>
-                        <p class="card-text">
-                            Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
-                        </p>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Редактировать</button>
-                    </div>
+                    <h5 class="card-title text-center">Заголовок новости</h5>
+                    <p class="card-text">
+                        Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
+                    </p>
+                    <button type="button" class="btn btn-success" onclick="editnew(1);">&#9998; Редактировать</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+
+
+<div class="modal fade" id="modalnew">
     <div class="modal-dialog m-2" style="max-width: none;" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Редактор новости</h5>
+                <h5 class="modal-title" id="modalnewTitle">Редактор новости</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">✕</span>
                 </button>
@@ -232,8 +56,8 @@
                 <div class="card">
                     <div class="card-header bg-white ">
                         <div class="justify-content-between" style="display: flex;">
-                            <input id="date" type="date" style="cursor: pointer;">
-                            <select id="type" class="form-control" style="width: auto;">
+                            <input id="newdate" type="date" style="cursor: pointer;">
+                            <select id="newtype" class="form-control" style="width: auto;">
                                 <option selected disabled>Тип новости</option>
                                 <option value="1">Обычная</option>
                                 <option value="2">Радостная</option>
@@ -242,9 +66,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div id="newcontainer">
-                            <h4 class="border p-2 mb-2" contenteditable="true">Заголовок новости</h4>
-                        </div>
+                        <div id="newcontainer"></div>
                         <div>
                             <button id="addtextblock" class="btn btn-secondary mt-2">Добавить блок текста</button>
                             <button id="addimageblock" class="btn btn-info mt-2">Добавить блок изображения</button>
@@ -254,8 +76,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-danger" onclick="$('#modalnew').modal('hide');">Закрыть</button>
+                <button type="button" class="btn btn-success" onclick="sendnew();">Сохранить</button>
             </div>
         </div>
     </div>

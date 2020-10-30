@@ -1,0 +1,6 @@
+.middle > thead > tr > th {
+    vertical-align: middle;
+}
+.middle > tbody > tr > td{
+    vertical-align: middle;
+}

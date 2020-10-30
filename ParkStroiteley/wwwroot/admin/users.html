@@ -10,11 +10,12 @@
     <link rel="stylesheet" href="css/datatables.min.css">
     <link rel="stylesheet" href="css/fullcalendar.min.css">
     <link rel="stylesheet" href="css/bootadmin.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <title>Dashboard</title>
 </head>
 <body class="bg-light">
-    <div class="sidebar sidebar-dark btn-dark toggled" style="position: fixed; z-index: 1000; top: 49px;">
+    <div class="sidebar sidebar-dark btn-dark toggled" style="position: fixed; z-index: 1000; top: 45.5px;">
         <ul class="list-unstyled" style="position: sticky;">
             <li><a href="#"><i class="fa fa-fw fa-flag"></i> Главная</a></li>
             <li><a href="#"><i class="fa fa-fw fa-user"></i> Пользователи</a></li>
@@ -23,9 +24,9 @@
             <li><a href="#"><i class="fa fa-fw fa-table"></i> Контакты</a></li>
         </ul>
     </div>
-    <nav class="navbar navbar-expand navbar-dark bg-info sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-info sticky-top pt-1 p[b-1">
         <a class="sidebar-toggle mr-3" href="#"><i class="fa fa-bars"></i></a>
-        <a class="navbar-brand" href="../../">Parkorsk</a>
+        <a class="navbar-brand" href="#">Parkorsk</a>
 
         <div class="navbar-collapse collapse">
             <ul class="navbar-nav ml-auto">
@@ -40,44 +41,134 @@
             </ul>
         </div>
     </nav>
-
-    <div class="d-flex">
-        <div class="p-4" style="max-width: 1200px; margin: 0 auto;">
-            <div class="justify-content-between mb-3" style="display: flex;">
-                <p class="ml-1 pl-1">Пользователи</p>          
+        <div class="p-1" style="max-width: 1000px; margin: 0 auto;">
+            <div class="mt-2 mb-2" style="display: flex; justify-content: space-between;">
+                <h3 class="">Пользователи</h3>        
+                <button class="btn btn-success">Новый пользователь</button>  
             </div>
-                <div class="table-responsive-sm">
-                <table class="table table-bordered text-center">
-                    <thead class="bg-info">
+                <div class="table-responsive-sm" style=" ">
+                <table class="table table-sm table-bordered text-center middle table-hover">
+                    <thead>
                       <tr>      
-                        <th></th>
-                        <th>ID</th>
-                        <th>Email</th>
                         <th>ФИО</th>
+                        <th>Email</th>
                         <th>Дата регистрации</th>
                         <th>Действие</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr >
-                        <td>
-                            <input type="checkbox" style="transform: scale(1.5)">
-                        </td>
-                        <td>0</td>
-                        <td>mr.mishana-319@yandex.ru</td>
+                      <tr>
                         <td>Кириллов Михаил Александрович</td>
+                        <td>mr.mishana-319@yandex.ru</td>
                         <td>21/10/2020</td>
                         <td>
-                            <button class="m-1 btn btn-info">Редактировать</button>
-                            <button class="m-1 btn btn-danger">Удалить</button>
+                            <button class="mt-1 mb-1 btn btn-sm btn-info btn-block">Редактировать</button>
+                            <button class="mt-1 mb-1 btn btn-sm btn-danger btn-block">Удалить</button>
                         </td>
                       </tr>
-                      
+                      <tr>
+                        <td>Кириллов Михаил Александрович</td>
+                        <td>mr.mishana-319@yandex.ru</td>
+                        <td>21/10/2020</td>
+                        <td>
+                            <button class="mt-1 mb-1 btn btn-sm btn-info btn-block">Редактировать</button>
+                            <button class="mt-1 mb-1 btn btn-sm btn-danger btn-block">Удалить</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Кириллов Михаил Александрович</td>
+                        <td>mr.mishana-319@yandex.ru</td>
+                        <td>21/10/2020</td>
+                        <td>
+                            <button class="mt-1 mb-1 btn btn-sm btn-info btn-block">Редактировать</button>
+                            <button class="mt-1 mb-1 btn btn-sm btn-danger btn-block">Удалить</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Кириллов Михаил Александрович</td>
+                        <td>mr.mishana-319@yandex.ru</td>
+                        <td>21/10/2020</td>
+                        <td>
+                            <button class="mt-1 mb-1 btn btn-sm btn-info btn-block">Редактировать</button>
+                            <button class="mt-1 mb-1 btn btn-sm btn-danger btn-block">Удалить</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Кириллов Михаил Александрович</td>
+                        <td>mr.mishana-319@yandex.ru</td>
+                        <td>21/10/2020</td>
+                        <td>
+                            <button class="mt-1 mb-1 btn btn-sm btn-info btn-block">Редактировать</button>
+                            <button class="mt-1 mb-1 btn btn-sm btn-danger btn-block">Удалить</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Кириллов Михаил Александрович</td>
+                        <td>mr.mishana-319@yandex.ru</td>
+                        <td>21/10/2020</td>
+                        <td>
+                            <button class="mt-1 mb-1 btn btn-sm btn-info btn-block">Редактировать</button>
+                            <button class="mt-1 mb-1 btn btn-sm btn-danger btn-block">Удалить</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Кириллов Михаил Александрович</td>
+                        <td>mr.mishana-319@yandex.ru</td>
+                        <td>21/10/2020</td>
+                        <td>
+                            <button class="mt-1 mb-1 btn btn-sm btn-info btn-block">Редактировать</button>
+                            <button class="mt-1 mb-1 btn btn-sm btn-danger btn-block">Удалить</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Кириллов Михаил Александрович</td>
+                        <td>mr.mishana-319@yandex.ru</td>
+                        <td>21/10/2020</td>
+                        <td>
+                            <button class="mt-1 mb-1 btn btn-sm btn-info btn-block">Редактировать</button>
+                            <button class="mt-1 mb-1 btn btn-sm btn-danger btn-block">Удалить</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Кириллов Михаил Александрович</td>
+                        <td>mr.mishana-319@yandex.ru</td>
+                        <td>21/10/2020</td>
+                        <td>
+                            <button class="mt-1 mb-1 btn btn-sm btn-info btn-block">Редактировать</button>
+                            <button class="mt-1 mb-1 btn btn-sm btn-danger btn-block">Удалить</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Кириллов Михаил Александрович</td>
+                        <td>mr.mishana-319@yandex.ru</td>
+                        <td>21/10/2020</td>
+                        <td>
+                            <button class="mt-1 mb-1 btn btn-sm btn-info btn-block">Редактировать</button>
+                            <button class="mt-1 mb-1 btn btn-sm btn-danger btn-block">Удалить</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Кириллов Михаил Александрович</td>
+                        <td>mr.mishana-319@yandex.ru</td>
+                        <td>21/10/2020</td>
+                        <td>
+                            <button class="mt-1 mb-1 btn btn-sm btn-info btn-block">Редактировать</button>
+                            <button class="mt-1 mb-1 btn btn-sm btn-danger btn-block">Удалить</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Кириллов Михаил Александрович</td>
+                        <td>mr.mishana-319@yandex.ru</td>
+                        <td>21/10/2020</td>
+                        <td>
+                            <button class="mt-1 mb-1 btn btn-sm btn-info btn-block">Редактировать</button>
+                            <button class="mt-1 mb-1 btn btn-sm btn-danger btn-block">Удалить</button>
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
         </div>
-    </div>
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
         <div class="modal-dialog m-2" style="max-width: none;" role="document">
             <div class="modal-content">
