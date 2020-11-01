@@ -66,6 +66,7 @@
     </PackageReference>
     <PackageReference Include="MimeKit" Version="2.9.2" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.0.0" />
+    <PackageReference Include="System.IO.Abstractions" Version="12.2.7" />
   </ItemGroup>
 
   <ItemGroup>

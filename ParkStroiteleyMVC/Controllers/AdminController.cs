@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Abstractions;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
@@ -45,14 +46,14 @@ namespace ParkStroiteleyMVC.Controllers
             return View();
         }
         [HttpPost]
-        public string News(List<IFormFile> images)
+        public string News(IFormFileCollection imgs, string head)
         {
-            var d = HttpContext;
-            if (images != null && images.Count() != 0)
+            var files = HttpContext.Request.HasFormContentType ? HttpContext.Request.Form.Files : null;
+            if (files != null && files.Count() != 0)
             {
                 var now = DateTime.Now.ToString("yyyyMMddHHmmss");
                 int i = 0;
-                foreach (var file in images)
+                foreach (var file in files)
                 {
                     var w = file.FileName.Split('.').Last();
                     var path = Path.Combine(Directory.GetCurrentDirectory(), now + "_" + i.ToString() + "." + w);
@@ -62,8 +63,9 @@ namespace ParkStroiteleyMVC.Controllers
                     }
                     i++;
                 }
+                return $"Файлов: {files.Count()}";
             }
-            return "okk";
+            return "error";
         }
         public IActionResult Events()
         {

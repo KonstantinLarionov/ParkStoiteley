@@ -43,7 +43,7 @@ function addblockimage(url = 'adding.png', description = 'Добавьте по�
             '<div class="m-2 row justify-content-around">' +
                 '<div>' +
                     '<div title="Нажмите чтобы добавить\\изменить изображение" onclick="addimage(this)" style="display: flex; justify-content: center; cursor: pointer;">' +
-                        '<input type="file" style="display: none;">' +
+                        '<input name="imgs" type="file" style="display: none;" form="imagesform"/>' +
                         '<img class="img-fluid" src="' + url + '">' +
                     '</div>' +
                     '<p contenteditable="true" class="p-1 mt-2 text-center">' + description + '</p>' +
@@ -56,7 +56,7 @@ function addblockimage(url = 'adding.png', description = 'Добавьте по�
         reader.onload = function (e) {
             img.attr('src', e.target.result);// создаем превьюшку изображения
         };
-        myfiles.push(this.files[0]);
+        myfiles.push(this);
         reader.readAsDataURL(this.files[0]);
     });
     $('#newcontainer').append(imageblock);// добавляем его на страницу
@@ -113,15 +113,16 @@ function editnew(id_new) {
         },
     });*/
 }
-function sendnew(){
+function sendnew() {
     $.ajax({
         url: '/Admin/News',
         method: 'post',
-        // отключаем обработку передаваемых данных, пусть передаются как есть
-        processData: false,
-        // отключаем установку заголовка типа запроса. Так jQuery скажет серверу что это строковой запрос
-        contentType: false,
-        data: { images: MyNew.files },
+        cache: false, // кэш и прочие настройки писать именно так (для файлов)
+        // (связано это с кодировкой и всякой лабудой)
+        contentType: false, // нужно указать тип контента false для картинки(файла)
+        processData: false, // для передачи картинки(файла) нужно false
+        data: new FormData($('#imagesform')[0]),
+        //data: new FormData(myfiles),
         success: function (data) {
             console.log(data);
         },
