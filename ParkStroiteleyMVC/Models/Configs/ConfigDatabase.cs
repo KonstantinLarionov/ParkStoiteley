@@ -11,17 +11,11 @@ namespace ParkStroiteleyMVC.Models.Configs
         /// <summary>
         /// DONT TOUCH IF DEBUG AND DEVELOP
         /// </summary>
-        public static string ConnectionString
-        {
-            get
-            {
-                return $"Server=localhost;Database={DB};User={UserDB};Password={PasswordDB};";
-            }
-        }
+        public static string ConnectionString{ get { return $"Server=localhost;Database={ DB };User={ UserDB };Password={ PasswordDB };"; } }
         /// <summary>
         /// DONT TOUCH IF DEBUG AND DEVELOP
         /// </summary>
-        public static readonly string UserDB = "UserPinguin";
+        public static readonly string UserDB = "u1122_pinguin";
         /// <summary>
         /// DONT TOUCH IF DEBUG AND DEVELOP
         /// </summary>

@@ -49,7 +49,6 @@ namespace ParkStroiteleyMVC
             }
         }
         public IConfiguration Configuration { get; }
-
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
@@ -72,7 +71,6 @@ namespace ParkStroiteleyMVC
                 options.Cookie.IsEssential = true;
             });
         }
-
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -86,11 +84,8 @@ namespace ParkStroiteleyMVC
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -102,14 +97,10 @@ namespace ParkStroiteleyMVC
                 KeepAliveInterval = TimeSpan.FromSeconds(120),
                 ReceiveBufferSize = 4 * 1024
             };
-            webSocketOptions.AllowedOrigins.Add("http://localhost");
-            webSocketOptions.AllowedOrigins.Add("https://localhost");
-            webSocketOptions.AllowedOrigins.Add("http://127.0.0.1");
-            webSocketOptions.AllowedOrigins.Add("https://127.0.0.1");
-            app.UseWebSockets(webSocketOptions);
+            app.UseWebSockets(webSocketOptions); // подрубаем WebSocket с параметрами (можно без них - пустой конструктор UseWebSockets)
             app.Use(async (context, next) =>
             {
-                if (context.Request.Path == "/ws")
+                if (context.Request.Path == "/ws") // /ws - путь подключения
                 {
                     if (context.WebSockets.IsWebSocketRequest)
                     {
@@ -130,7 +121,7 @@ namespace ParkStroiteleyMVC
 
             });
         }
-        private async Task Echo(HttpContext context, WebSocket webSocket)
+        private async Task Echo(HttpContext context, WebSocket webSocket) // вот эт херню над вынести куда то отдельно
         {
             var buffer = new byte[1024 * 4];
             WebSocketReceiveResult result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
