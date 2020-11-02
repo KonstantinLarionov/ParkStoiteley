@@ -1,7 +1,7 @@
 $(document).ready(function () {
     // тут тупо чилим :D
 });
-var myfiles = [];
+var myfiles = new FormData();
 $('#addtextblock').click(function () { /* создаем блок для добавления текста */
     addblocktext();
 });
@@ -20,23 +20,23 @@ function setdatenow() {
 }
 /* Функция добавления блока заголовка новости */
 function addblockheader(text = 'Заголовок новости') {
-    $('#newcontainer').append($('<h4 class="border p-2 mb-2" contenteditable="true">' + text + '</h4>'));
+    $('#newcontainer').append($('<h4 class="border p-2 mb-2" id="newheader" contenteditable="true">' + text + '</h4>'));
 }
 /* Функция добавления блока текста */
 function addblocktext(text = 'Новый блок текста - добавьте ваш текст сюда') {
     var textblock = $(
-        '<div type="text" class="border mb-2">' +
-        '<div class="w-100" style="display: flex; justify-content: flex-end;">' +
-        '<button title="Удалить этот блок" onclick="deleteblock(this);" class="btn btn-danger m-1 mr-0">✕</button>' +
-        '</div>' +
-        '<p class="p-2 m-1 mb-0" contenteditable="true">' + text + '</p>' +
+        '<div type="0" class="border mb-2">' +
+            '<div class="w-100" style="display: flex; justify-content: flex-end;">' +
+                '<button title="Удалить этот блок" onclick="deleteblock(this);" class="btn btn-danger m-1 mr-0">✕</button>' +
+            '</div>' +
+            '<p class="p-2 m-1 mb-0" contenteditable="true">' + text + '</p>' +
         '</div>');
     $('#newcontainer').append(textblock);
 }
 /* Функция добавления блока изображения */
 function addblockimage(url = 'adding.png', description = 'Добавьте подпись к рисунку') {
     var imageblock = $(
-        '<div type="image" class="border mb-2">' +
+        '<div type="1" class="border mb-2">' +
             '<div class="w-100" style="display: flex; justify-content: flex-end;">' +
                 '<button title="Удалить этот блок" onclick="deleteblock(this);" class="btn btn-danger m-1 mr-0">✕</button>' +
             '</div>' +
@@ -56,7 +56,7 @@ function addblockimage(url = 'adding.png', description = 'Добавьте по�
         reader.onload = function (e) {
             img.attr('src', e.target.result);// создаем превьюшку изображения
         };
-        myfiles.push(this);
+        myfiles.append('imgs', this.files[0]);
         reader.readAsDataURL(this.files[0]);
     });
     $('#newcontainer').append(imageblock);// добавляем его на страницу
@@ -64,13 +64,13 @@ function addblockimage(url = 'adding.png', description = 'Добавьте по�
 /* Функция добавления блока видео */
 function addblockvideo(src = '') {
     var textblock = $(
-        '<div type="video" class="border mb-2">' +
-        '<div class="w-100" style="display: flex; justify-content: flex-end;">' +
-        '<button title="Удалить этот блок" onclick="deleteblock(this);" class="btn btn-danger m-1 mr-0">✕</button>' +
-        '</div>' +
-        '<div class="w-100" style="display: flex;">' +
-        '<textarea class="m-2 w-100 p-2" rows="5" style="resize: vertical;" placeholder="Это поле для вставки кода видео">' + src + '</textarea>' +
-        '</div>' +
+        '<div type="2" class="border mb-2">' +
+            '<div class="w-100" style="display: flex; justify-content: flex-end;">' +
+                '<button title="Удалить этот блок" onclick="deleteblock(this);" class="btn btn-danger m-1 mr-0">✕</button>' +
+            '</div>' +
+            '<div class="w-100" style="display: flex;">' +
+                '<textarea class="m-2 w-100 p-2" rows="5" style="resize: vertical;" placeholder="Это поле для вставки кода видео">' + src + '</textarea>' +
+            '</div>' +
         '</div>');
     $('#newcontainer').append(textblock);
 }
@@ -89,6 +89,7 @@ function clearmodal() {
 }
 /* Функция для кнопки 'Новая новость' */
 function addnew() {
+    myfiles = new FormData();
     $('#newcontainer').empty(); // Очищаем модалку
     setdatenow();
     addblockheader(); // Добавляем дефолт заголовок
@@ -101,36 +102,58 @@ function editnew(id_new) {
     addblocktext('текстовый тескт');
     addblockimage('null', '123321');
     addblockvideo('srcsrcsrc');
-
     $('#modalnew').modal('show'); // Показываем модалку
-    /*$.ajax({
-        url: '/index.php',
-        method: 'post',
-        dataType: 'html',
-        data: {text: 'Текст'},
-        success: function(data){
-            alert(data);
-        },
-    });*/
 }
 function sendnew() {
+    
+    myfiles.append("news", JSON.stringify({
+        Header: $('#newheader').html(),
+        Type: parseInt($('#newtype').val()),
+        DatePublish: $('#newdate').val()
+    }));
+    $('#newcontainer').children().each(function (i, block) {
+        if (i == 0) return;
+        switch ($(block).attr('type')) {
+            case '0':
+                myfiles.append("blocks", JSON.stringify({
+                    Type: 0,
+                    Text: $(block).find('p').html()
+                }));
+                break;
+            case '1':
+                myfiles.append("blocks", JSON.stringify({
+                    Type: 1,
+                    ImageURL: $(block).find('input[type=file]')[0].files[0].name,
+                    ImageSizeType: 0,
+                    ImageAbout: $(block).find('p').html()
+                }));
+                break;
+            case '2':
+                myfiles.append("blocks", JSON.stringify({
+                    Type: 2,
+                    VideoLink: $(block).find('textarea').val()
+                }));
+                break;
+            default:
+        }
+        
+    });
+    /*fetch("/Admin/News", {
+        method: 'POST',
+        body: myfiles
+    }).then((response) => {
+       console.log(response);
+    })*/
+    //console.log(await info.text());
     $.ajax({
         url: '/Admin/News',
         method: 'post',
-        cache: false, // кэш и прочие настройки писать именно так (для файлов)
-        // (связано это с кодировкой и всякой лабудой)
-        contentType: false, // нужно указать тип контента false для картинки(файла)
-        processData: false, // для передачи картинки(файла) нужно false
-        data: new FormData($('#imagesform')[0]),
-        //data: new FormData(myfiles),
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: myfiles,
         success: function (data) {
             console.log(data);
         },
-    });
-}
-function cycle() {
-    $('#newcontainer').children().each(function (i, block) {
-        if (i == 0) return;
-        console.log($(block).attr('type'));
     });
 }

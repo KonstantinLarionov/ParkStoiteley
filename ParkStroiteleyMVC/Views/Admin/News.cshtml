@@ -8,7 +8,7 @@
 
         <div class="col-xl-4 col-lg-4 col-md-6 p-1">
             <div class="card">
-                <img class="card-img-top" src="f6.jpg" alt="Card image cap">
+                @*<img class="card-img-top" src="f6.jpg" alt="Card image cap">*@
                 <div class="card-body">
                     <div style="display: flex; justify-content: space-between;">
                         <span>15.10.2020</span>
@@ -18,13 +18,13 @@
                     <p class="card-text">
                         Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
                     </p>
-                    <button type="button" class="btn btn-success" onclick="editnew(0);">&#9998; Редактировать</button>
+                    <button type="button" class="btn btn-info" onclick="editnew(0);">&#9998; Редактировать</button>
                 </div>
             </div>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 p-1">
             <div class="card">
-                <img class="card-img-top" src="loft.jpg" alt="Card image cap">
+                @*<img class="card-img-top" src="loft.jpg" alt="Card image cap">*@
                 <div class="card-body">
                     <div style="display: flex; justify-content: space-between;">
                         <span>15.10.2020</span>
@@ -34,7 +34,7 @@
                     <p class="card-text">
                         Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
                     </p>
-                    <button type="button" class="btn btn-success" onclick="editnew(1);">&#9998; Редактировать</button>
+                    <button type="button" class="btn btn-info" onclick="editnew(1);">&#9998; Редактировать</button>
                 </div>
             </div>
         </div>
@@ -56,13 +56,19 @@
                 <div class="card">
                     <div class="card-header bg-white ">
                         <div class="justify-content-between" style="display: flex;">
-                            <input id="newdate" type="date" style="cursor: pointer;">
-                            <select id="newtype" class="form-control" style="width: auto;">
-                                <option selected disabled>Тип новости</option>
-                                <option value="1">Обычная</option>
-                                <option value="2">Радостная</option>
-                                <option value="3">Грустная</option>
-                            </select>
+                            <div style="display: flex; align-items: center;">
+                                <strong class="mr-2">Дата </strong>
+                                <input id="newdate" type="date" style="cursor: pointer;">
+                            </div>
+                            <div style="display: flex; align-items: center;">
+                                <strong class="mr-2">Тип </strong>
+                                <select id="newtype" class="form-control" style="width: auto;">
+                                    <option selected value="0">Важная</option>
+                                    <option value="1">Ежедневная</option>
+                                    <option value="2">Недельная</option>
+                                    <option value="3">Мероприятие</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">

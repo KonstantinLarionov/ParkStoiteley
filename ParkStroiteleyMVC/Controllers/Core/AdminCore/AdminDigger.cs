@@ -21,7 +21,10 @@ namespace ParkStroiteleyMVC.Controllers.Core.AdminCore
             var contacts = Context.Contacts.FirstOrDefault();
             return contacts;
         }
-
+        public void AddNews(NewDTO mynew)
+        {
+            Context.News.Add(mynew);
+        }
         #region [IDisposable]
         public void Connect()
         {
