@@ -17,16 +17,16 @@ namespace ParkStroiteleyMVC.Controllers
     public class HomeController : Controller
     {
         private Action<string> Logs => Startup.Logs;
-        private readonly ILogger<HomeController> _logger;
+        /*private readonly ILogger<HomeController> _logger;*/
 
         public static IHomeDispatcher Dispatcher;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(/*ILogger<HomeController> logger*/)
         {
-            if (Dispatcher == null)
+            /*if (Dispatcher == null)
                 Logs.Invoke("Dispatcher was NULL! Check youre middleware.");
 
-            _logger = logger;
+            _logger = logger;*/
         }
         public IActionResult AboutCookie()
         {

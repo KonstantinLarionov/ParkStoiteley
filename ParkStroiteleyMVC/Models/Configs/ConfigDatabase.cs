@@ -23,6 +23,6 @@ namespace ParkStroiteleyMVC.Models.Configs
         /// <summary>
         /// DONT TOUCH IF DEBUG AND DEVELOP
         /// </summary>
-        public static readonly string DB = "ParkDB";
+        public static readonly string DB = "u1122881_parkdb";
     }
 }

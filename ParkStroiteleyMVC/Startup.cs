@@ -118,7 +118,6 @@ namespace ParkStroiteleyMVC
                 {
                     await next();
                 }
-
             });
         }
         private async Task Echo(HttpContext context, WebSocket webSocket) // вот эт херню над вынести куда то отдельно

@@ -3,7 +3,7 @@
 @using ParkStroiteleyMVC.Models.Extensions;
 <div class="container fullnew pb-4">
     <div class="row headernews pt-4 pb-4">
-        <span class="pl-3">@Model.News.DatePublish</span>
+        <span class="pl-3">@Model.News.DatePublish.ToShortDateString()</span>
         <span class="pr-3">
             @{
                 switch (Model.News.Type)

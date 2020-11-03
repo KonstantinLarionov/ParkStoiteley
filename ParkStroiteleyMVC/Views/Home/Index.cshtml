@@ -21,7 +21,7 @@
                 <p> @Model.News[i].Blocks[0].Text?.ToPreview()</p>
                 <a class="mycol5" href="/Home/CardNews?id=@Model.News[i].Id">Читать дальше</a>
                 <div class="row footernews">
-                    <span class="pl-3">@Model.News[i].DatePublish</span>
+                    <span class="pl-3">@Model.News[i].DatePublish.ToShortDateString()</span>
                     <span class="pr-3">
                         @{
                             switch (Model.News[i].Type)

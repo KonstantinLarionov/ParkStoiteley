@@ -26,17 +26,17 @@ namespace ParkStroiteleyMVC.Controllers
     }
     public class AdminController : Controller
     {
-        private Action<string> Logs => Startup.Logs;
-        private readonly ILogger<AdminController> _logger;
+        //private Action<string> Logs => Startup.Logs;
+        //private readonly ILogger<AdminController> _logger;
         private DBContext db = new DBContext(new DbContextOptions<DBContext>());
         public static IAdminDispatcher Dispatcher;
 
-        public AdminController(ILogger<AdminController> logger)
+        public AdminController(/*ILogger<AdminController> logger*/)
         {
-            if (Dispatcher == null)
+            /*if (Dispatcher == null)
                 Logs.Invoke("Dispatcher was NULL! Check youre middleware.");
 
-            _logger = logger;
+            _logger = logger;*/
         }
         public IActionResult Login()
         {
@@ -58,32 +58,39 @@ namespace ParkStroiteleyMVC.Controllers
         [HttpPost]
         public string News(string? news, List<string> blocks, List<IFormFile> imgs)
         {
-            var mynew = JsonSerializer.Deserialize<NewDTO>(news);
-            var myblocks = new List<BlockDTO>();
-            foreach (var item in blocks)
+            try
             {
-                myblocks.Add(JsonSerializer.Deserialize<BlockDTO>(item));
-            }
-            mynew.Blocks = myblocks;
-            if (imgs != null && imgs.Count() != 0)
-            {
-                var now = DateTime.Now.ToString("yyyyMMddHHmmss");
-                int i = 0;
-                foreach (var file in imgs)
+                var mynew = JsonSerializer.Deserialize<NewDTO>(news);
+                var myblocks = new List<BlockDTO>();
+                foreach (var item in blocks)
                 {
-                    var w = file.FileName.Split('.').Last();
-                    var path = Path.Combine(Directory.GetCurrentDirectory(), now + "_" + i.ToString() + "." + w);
-                    using (var stream = new FileStream(path, FileMode.Create))
+                    myblocks.Add(JsonSerializer.Deserialize<BlockDTO>(item));
+                }
+                mynew.Blocks = myblocks;
+                if (imgs != null && imgs.Count() != 0)
+                {
+                    var now = DateTime.Now.ToString("yyyyMMddHHmmss");
+                    int i = 0;
+                    foreach (var file in imgs)
                     {
-                        file.CopyTo(stream);
+                        var w = file.FileName.Split('.').Last();
+                        var path = Path.Combine(Directory.GetCurrentDirectory(), now + "_" + i.ToString() + "." + w);
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            file.CopyTo(stream);
+                        }
+                        i++;
                     }
-                    i++;
                 }
                 db.News.Add(mynew);
                 db.SaveChanges();
                 return $"Новость добавлена, Блоков: {myblocks.Count()}, Файлов: {imgs.Count()}";
             }
-            return "error";
+            catch (Exception exp)
+            {
+                return exp.ToString();
+            }
+            
         }
         public IActionResult Events()
         {

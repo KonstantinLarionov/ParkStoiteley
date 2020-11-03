@@ -313,6 +313,7 @@
   <ItemGroup>
     <Folder Include="Logs\" />
     <Folder Include="wwwroot\content\gallery\" />
+    <Folder Include="wwwroot\content\img\none\" />
   </ItemGroup>
 
 </Project>
