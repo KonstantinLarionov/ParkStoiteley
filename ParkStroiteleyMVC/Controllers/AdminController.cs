@@ -53,8 +53,14 @@ namespace ParkStroiteleyMVC.Controllers
         }
         public IActionResult News()
         {
-            var news = db.News.ToList();
-            return View(new NewsModel { News = news });
+            var news = db.News.Include(x => x.Blocks).ToList();
+            
+            List<NewsPreview> previews = new List<NewsPreview>();
+            foreach (var item in news)
+            {
+                previews.Add(item.GetPreview());
+            }
+            return View(new NewsModel { Previews = previews });
         }
        
         [HttpPost]

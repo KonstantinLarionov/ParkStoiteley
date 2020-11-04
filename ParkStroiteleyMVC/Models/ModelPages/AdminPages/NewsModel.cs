@@ -8,7 +8,6 @@ namespace ParkStroiteleyMVC.Models.ModelPages.AdminPages
 {
     public class NewsModel
     {
-        public List<NewDTO> News { get; set; }
+        public List<NewsPreview> Previews { get; set; }
     }
-
 }
