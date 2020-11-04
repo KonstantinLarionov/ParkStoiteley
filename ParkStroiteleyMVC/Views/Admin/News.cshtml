@@ -1,43 +1,30 @@
 ﻿@{ Layout = "_LayoutAdmin"; }
+@model ParkStroiteleyMVC.Models.ModelPages.AdminPages.NewsModel;
 <div class="p-1" style="max-width: 1200px; margin: 0 auto;">
     <div class="justify-content-between pb-3 pt-3 pl-1 pr-1" style="display: flex;">
         <h3 class="">Новости</h3>
         <button class="btn btn-success" onclick="addnew();">&#10010; Новая новость</button>
     </div>
     <div class="row m-0">
-
-        <div class="col-xl-4 col-lg-4 col-md-6 p-1">
-            <div class="card">
-                @*<img class="card-img-top" src="f6.jpg" alt="Card image cap">*@
-                <div class="card-body">
-                    <div style="display: flex; justify-content: space-between;">
-                        <span>15.10.2020</span>
-                        <span>Важное</span>
+        @foreach (var item in Model.News)
+        {
+            <div class="col-xl-4 col-lg-4 col-md-6 p-1">
+                <div class="card">
+                    @*<img class="card-img-top" src="f6.jpg" alt="Card image cap">*@
+                    <div class="card-body">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>@item.DatePublish.ToShortDateString()</span>
+                            <span>Важное</span>
+                        </div>
+                        <h5 class="card-title text-center">Заголовок новости</h5>
+                        <p class="card-text">
+                            Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
+                        </p>
+                        <button type="button" class="btn btn-info" onclick="editnew(0);">&#9998; Редактировать</button>
                     </div>
-                    <h5 class="card-title text-center">Заголовок новости</h5>
-                    <p class="card-text">
-                        Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
-                    </p>
-                    <button type="button" class="btn btn-info" onclick="editnew(0);">&#9998; Редактировать</button>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-4 col-lg-4 col-md-6 p-1">
-            <div class="card">
-                @*<img class="card-img-top" src="loft.jpg" alt="Card image cap">*@
-                <div class="card-body">
-                    <div style="display: flex; justify-content: space-between;">
-                        <span>15.10.2020</span>
-                        <span>Важное</span>
-                    </div>
-                    <h5 class="card-title text-center">Заголовок новости</h5>
-                    <p class="card-text">
-                        Мощная система гибких сеток, предоставляющая преимущества для пользователей мобильных устройств, для удобной верстки и расположения элементов любых видов и размеров. Используется система «12 колонок», 5-ти адаптивных ярусов, препроцессоров Sass и предустановленных классов.
-                    </p>
-                    <button type="button" class="btn btn-info" onclick="editnew(1);">&#9998; Редактировать</button>
-                </div>
-            </div>
-        </div>
+        }
     </div>
 </div>
 
@@ -89,5 +76,5 @@
     </div>
 </div>
 <form id="imagesform" style="display: none;" method="post" enctype="multipart/form-data">
-    <input value="123" name="head"/>
+    <input value="123" name="head" />
 </form>

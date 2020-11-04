@@ -117,7 +117,7 @@ function sendnew() {
             case '0':
                 myfiles.append("blocks", JSON.stringify({
                     Type: 0,
-                    Text: $(block).find('p').html().replace(new RegExp("<div>", 'g'), '').replace(new RegExp("</div>", 'g'), '')
+                    Text: $(block).find('p').html()//.replace(new RegExp("<div>", 'g'), '').replace(new RegExp("</div>", 'g'), '').replace(new RegExp("<br>", 'g'), '\n\r')
                 }));
                 break;
             case '1':

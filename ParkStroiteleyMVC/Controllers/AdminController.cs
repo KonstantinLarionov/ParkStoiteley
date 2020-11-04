@@ -16,6 +16,7 @@ using ParkStroiteleyMVC.Controllers.Core.Interface;
 using System.Drawing;
 using ParkStroiteleyMVC.Models.ObjectDTO;
 using ParkStroiteleyMVC.Models;
+using ParkStroiteleyMVC.Models.ModelPages.AdminPages;
 
 namespace ParkStroiteleyMVC.Controllers
 {
@@ -52,7 +53,8 @@ namespace ParkStroiteleyMVC.Controllers
         }
         public IActionResult News()
         {
-            return View();
+            var news = db.News.ToList();
+            return View(new NewsModel { News = news });
         }
        
         [HttpPost]
