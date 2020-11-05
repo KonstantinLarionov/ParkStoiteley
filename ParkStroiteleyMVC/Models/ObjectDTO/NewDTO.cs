@@ -48,7 +48,7 @@ namespace ParkStroiteleyMVC.Models.ObjectDTO
                 Header = Header,
                 Type = Type,
                 DatePublish = DatePublish,
-                Text = text,
+                Text = text == null ? "" : (text.Length <= 300? text : $"{text.Substring(0, 300)}..."),
                 Image = img
             };
         }

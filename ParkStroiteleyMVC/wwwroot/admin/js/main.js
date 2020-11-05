@@ -98,10 +98,33 @@ function addnew() {
 /* Фукция редактирования новости */
 function editnew(id_new) {
     clearmodal();
-    addblockheader('тестовый заголовок редактирования новости');
-    addblocktext('текстовый тескт');
-    addblockimage('null', '123321');
-    addblockvideo('srcsrcsrc');
+    $.ajax({
+        url: '/Admin/GetNews',
+        //async: false,
+        method: 'post',
+        data: "Id=" + id_new,
+        success: function (data) {
+            var news = JSON.parse(data);
+            console.log(news);
+            $('#newdate').attr('value', news.DatePublish.split('T')[0]);
+            $('#newtype').attr('value', news.Type);
+            addblockheader(news.Header);
+            news.Blocks.forEach(function (item, i, arr) {
+                switch (item.Type) {
+                    case 0: //text
+                        addblocktext(item.Text);
+                        break;
+                    case 1: //image
+                        addblockimage('/images/' + item.ImageURL, item.ImageAbout);
+                        break;
+                    case 2: //video
+                        addblockvideo(item.VideoLink);
+                        break;
+                    default:
+                }
+            });
+        },
+    });
     $('#modalnew').modal('show'); // Показываем модалку
 }
 function sendnew() {
@@ -117,7 +140,7 @@ function sendnew() {
             case '0':
                 myfiles.append("blocks", JSON.stringify({
                     Type: 0,
-                    Text: $(block).find('p').html()//.replace(new RegExp("<div>", 'g'), '').replace(new RegExp("</div>", 'g'), '').replace(new RegExp("<br>", 'g'), '\n\r')
+                    Text: $(block).find('p').text()
                 }));
                 break;
             case '1':
@@ -125,7 +148,7 @@ function sendnew() {
                     Type: 1,
                     ImageURL: $(block).find('input[type=file]')[0].files[0].name,
                     ImageSizeType: 0,
-                    ImageAbout: $(block).find('p').html()
+                    ImageAbout: $(block).find('p').text()
                 }));
                 break;
             case '2':
@@ -138,13 +161,6 @@ function sendnew() {
         }
         
     });
-    /*fetch("/Admin/News", {
-        method: 'POST',
-        body: myfiles
-    }).then((response) => {
-       console.log(response);
-    })*/
-    //console.log(await info.text());
     $.ajax({
         url: '/Admin/News',
         method: 'post',
@@ -153,6 +169,7 @@ function sendnew() {
         processData: false,
         data: myfiles,
         success: function (data) {
+            alert(data);
             console.log(data);
         },
     });

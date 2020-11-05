@@ -13,21 +13,24 @@
                 <div class="card">
                     @if (!String.IsNullOrEmpty(item.Image))
                     { 
-                        <img class="card-img-top" src="@item.Image" alt="Card image cap">
+                        <img class="card-img-top" src="~/images/@item.Image" alt="Изображение не загружено">
                     }
                     <div class="card-body">
                         <div style="display: flex; justify-content: space-between;">
                             <span>@item.DatePublish.ToShortDateString()</span>
                             <span>@item.Type.GetEnumMemberAttributeValue()</span>
                         </div>
-                        <h5 class="card-title text-center">Заголовок новости</h5>
+                        <h5 class="card-title text-center">@item.Header</h5>
                         @if (!String.IsNullOrEmpty(item.Text))
-                        { 
+                        {
                             <p class="card-text">
                                 @item.Text
                             </p>
                         }
-                        <button type="button" class="btn btn-info" onclick="editnew(@item.Id);">&#9998; Редактировать</button>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <button type="button" class="btn btn-primary" onclick="editnew(@item.Id);">✎ Редактировать</button>
+                        <button type="button" class="btn btn-danger" onclick="editnew(@item.Id);">✖ Удалить</button>
+                    </div>
                     </div>
                 </div>
             </div>

@@ -54,7 +54,7 @@ namespace ParkStroiteleyMVC.Controllers
         public IActionResult News()
         {
             var news = db.News.Include(x => x.Blocks).ToList();
-            
+            news.Reverse();
             List<NewsPreview> previews = new List<NewsPreview>();
             foreach (var item in news)
             {
@@ -77,17 +77,17 @@ namespace ParkStroiteleyMVC.Controllers
                 mynew.Blocks = myblocks;
                 if (imgs != null && imgs.Count() != 0)
                 {
-                    var now = DateTime.Now.ToString("yyyyMMddHHmmss");
-                    int i = 0;
+                    //var now = DateTime.Now.ToString("yyyyMMddHHmmss");
+                    //int i = 0;
                     foreach (var file in imgs)
                     {
-                        var w = file.FileName.Split('.').Last();
-                        var path = Path.Combine(Directory.GetCurrentDirectory(), now + "_" + i.ToString() + "." + w);
+                        //var w = file.FileName.Split('.').Last();
+                        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", file.FileName/*now + "_" + i.ToString() + "." + w*/);
                         using (var stream = new FileStream(path, FileMode.Create))
                         {
                             file.CopyTo(stream);
                         }
-                        i++;
+                        //i++;
                     }
                 }
                 db.News.Add(mynew);
@@ -99,6 +99,14 @@ namespace ParkStroiteleyMVC.Controllers
                 return exp.ToString();
             }
             
+        }
+        [HttpPost]
+        public string GetNews(int? Id)
+        {
+            if (Id == null || Id < 0)
+                return "error";
+            var nw = db.News.Where(f => f.Id == Id).Include(b => b.Blocks).FirstOrDefault();
+            return JsonSerializer.Serialize(nw);
         }
         public IActionResult Events()
         {
