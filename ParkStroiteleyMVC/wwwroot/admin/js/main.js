@@ -2,6 +2,7 @@ $(document).ready(function () {
     // тут тупо чилим :D
 });
 var myfiles = new FormData();
+var idNew = null;
 $('#addtextblock').click(function () { /* создаем блок для добавления текста */
     addblocktext();
 });
@@ -89,14 +90,17 @@ function clearmodal() {
 }
 /* Функция для кнопки 'Новая новость' */
 function addnew() {
+    idNew = null;
     myfiles = new FormData();
-    $('#newcontainer').empty(); // Очищаем модалку
+    clearmodal(); // Очищаем модалку
     setdatenow();
     addblockheader(); // Добавляем дефолт заголовок
     $('#modalnew').modal('show'); // Показываем модалку
 }
 /* Фукция редактирования новости */
 function editnew(id_new) {
+    idNew = id_new;
+    myfiles = new FormData();
     clearmodal();
     $.ajax({
         url: '/Admin/GetNews',
@@ -105,9 +109,8 @@ function editnew(id_new) {
         data: "Id=" + id_new,
         success: function (data) {
             var news = JSON.parse(data);
-            console.log(news);
             $('#newdate').attr('value', news.DatePublish.split('T')[0]);
-            $('#newtype').attr('value', news.Type);
+            $('#newtype').find('option')[news.Type].selected = true
             addblockheader(news.Header);
             news.Blocks.forEach(function (item, i, arr) {
                 switch (item.Type) {
@@ -123,16 +126,17 @@ function editnew(id_new) {
                     default:
                 }
             });
+            $('#modalnew').modal('show'); // Показываем модалку
         },
     });
-    $('#modalnew').modal('show'); // Показываем модалку
 }
 function sendnew() {
     
     myfiles.append("news", JSON.stringify({
         Header: $('#newheader').html(),
         Type: parseInt($('#newtype').val()),
-        DatePublish: $('#newdate').val()
+        DatePublish: $('#newdate').val(),
+        Id: idNew
     }));
     $('#newcontainer').children().each(function (i, block) {
         if (i == 0) return;
@@ -146,7 +150,7 @@ function sendnew() {
             case '1':
                 myfiles.append("blocks", JSON.stringify({
                     Type: 1,
-                    ImageURL: $(block).find('input[type=file]')[0].files[0].name,
+                    ImageURL: $(block).find('input[type=file]')[0].files.length > 0 ? $(block).find('input[type=file]')[0].files[0].name : $(block).find('img')[0].src.split('/').pop(),
                     ImageSizeType: 0,
                     ImageAbout: $(block).find('p').text()
                 }));
@@ -169,8 +173,14 @@ function sendnew() {
         processData: false,
         data: myfiles,
         success: function (data) {
-            alert(data);
-            console.log(data);
+            var a = JSON.parse(data);
+            console.log(a);
+            if (a.status == 'success') {
+                swal('Успешно', a.data, 'success');
+            }
+            if (a.status == 'error') {
+                swal('Ошибка', a.data, 'error');
+            }
         },
     });
 }

@@ -13,11 +13,14 @@
             continue;
 
         <div class="row new pt-3 pb-3 mb-3">
-            <div class="col-md-4">
-                <img class="img-fluid" width="640" height="480" src="@Model.News[i].Blocks[0]?.ImageURL.GetFullPathImg(Model.News[i].Blocks[0].ImageSize)">
+            @if (Model.News[i].GetPreview().Image != null)
+            {
+            <div class="col-md-6">
+                <img class="img-fluid" width="640" height="480" src="/images/@Model.News[i].GetPreview().Image">
             </div>
-            <div class="col-md-8 pt-2" style="padding-bottom: 30px;">
-                <p> @Model.News[i].Blocks[0].Text?.ToPreview()</p>
+            }
+            <div class="col-md pt-2" style="padding-bottom: 30px;">
+                <p> @Model.News[i].GetPreview().Text</p>
                 <a class="mycol5" href="/Home/CardNews?id=@Model.News[i].Id">Читать дальше</a>
                 <div class="row footernews">
                     <span class="pl-3">@Model.News[i].DatePublish</span>

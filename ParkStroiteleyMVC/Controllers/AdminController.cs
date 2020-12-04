@@ -90,15 +90,34 @@ namespace ParkStroiteleyMVC.Controllers
                         //i++;
                     }
                 }
-                db.News.Add(mynew);
-                db.SaveChanges();
-                return $"Новость добавлена, Блоков: {myblocks.Count()}, Файлов: {imgs.Count()}";
+                if (mynew.Id == null)
+                {
+                    db.News.Add(mynew);
+                    db.SaveChanges();
+                    return "{\"status\":\"success\", \"data\":\"Новость добавлена, Блоков: " + myblocks.Count().ToString() + ", Файлов: " + imgs.Count().ToString() + ", обновите страницу\"}";
+                }
+                else 
+                {
+                    var editnew = db.News.Where(f => f.Id == mynew.Id).Include(b => b.Blocks).FirstOrDefault();
+                    if (editnew == null)
+                    {
+                        return "{\"status\":\"error\", \"data\":\"Новость c Id = " + mynew.Id.ToString() + " не найдена\"}";
+                    }
+                    else 
+                    {
+                        editnew.Header = mynew.Header;
+                        editnew.DatePublish = mynew.DatePublish;
+                        editnew.Type = mynew.Type;
+                        editnew.Blocks = mynew.Blocks;
+                        db.SaveChanges();
+                        return "{\"status\":\"success\", \"data\":\"Новость c Id = " + mynew.Id.ToString() + " успешно отредактирована, обновите страницу\"}"; ;
+                    }
+                }
             }
             catch (Exception exp)
             {
-                return exp.ToString();
+                return "{\"status\":\"error\", \"data\": \"" + exp.ToString() + "\"}";
             }
-            
         }
         [HttpPost]
         public string GetNews(int? Id)

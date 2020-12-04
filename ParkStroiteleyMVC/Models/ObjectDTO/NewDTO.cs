@@ -12,7 +12,7 @@ namespace ParkStroiteleyMVC.Models.ObjectDTO
 {
     public class NewDTO
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Header { get; set; }
         public NewsType Type { get; set; }
         public DateTime DatePublish { get; set; }
@@ -55,7 +55,7 @@ namespace ParkStroiteleyMVC.Models.ObjectDTO
     }
     public class NewsPreview
     { 
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Header { get; set; }
         public NewsType Type { get; set; }
         public DateTime DatePublish { get; set; }
