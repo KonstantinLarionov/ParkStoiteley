@@ -1,19 +1,6 @@
-
 $(window).on("load", function () {
     setTimeout(function () { LoadOff() }, 2000);
 });
-
-function RootingAnimation(millisecond) {
-    LoadOn();
-    setTimeout(function () { LoadOff() }, millisecond);
-}
-function LoadOn() {
-    $("#right").css("transform", "translateX(0)");
-    $("#left").css("transform", "translateX(0)");
-    $(".item-door").css("box-shadow", "0 0px 0px 0px rgba(0,0,0,0), 0 0px 0px 0px rgba(0,0,0,0), 0 0px 0px 0 rgba(0,0,0,0)");
-    setTimeout(function () { $("#preloader").removeAttr("hidden") }, 1000);
-
-}
 function LoadOff() {
     $("#preloader").attr("hidden", "");
     $("#right").css("transform", "translateX(-100%)");
