@@ -15,11 +15,11 @@ namespace ParkStroiteleyMVC.Models.Configs
         /// <summary>
         /// DONT TOUCH IF DEBUG AND DEVELOP
         /// </summary>
-        public static readonly string UserDB = "u1122_pinguin";
+        public static readonly string UserDB = /*"root"*/"u1122_pinguin";
         /// <summary>
         /// DONT TOUCH IF DEBUG AND DEVELOP
         /// </summary>
-        public static readonly string PasswordDB = "KinderPingui321123";
+        public static readonly string PasswordDB = /*"root"*/"KinderPingui321123";
         /// <summary>
         /// DONT TOUCH IF DEBUG AND DEVELOP
         /// </summary>

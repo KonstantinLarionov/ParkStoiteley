@@ -122,8 +122,8 @@ namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
             {
                 var news = Digger.GetOneNews(CardNewsId);
                 model = new CardNewsModel(
-                news.Header,
-                "",
+                "НОВОСТИ ПАРКА",
+                "Последние новости и события нашего любимого парка.",
                 Digger.GetContacts() ?? new Models.ObjectDTO.ContactsDTO() { PhoneNumber = +7000000 });
                 model.News = news;
             }
