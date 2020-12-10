@@ -7,6 +7,7 @@ namespace ParkStroiteleyMVC.Models.ModelPages
 {
     public class GalleryModel
     {
+        public Models.Enums.ImageGalleryType Type { get; set; }
         public List<Models.ObjectDTO.GalleryDTO> Imgs { get; set; }
     }
 }

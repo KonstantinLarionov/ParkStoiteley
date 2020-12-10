@@ -1,3 +1,6 @@
+.swal-button--del {
+    background-color: red;
+}
 .middle > thead > tr > th {
     vertical-align: middle;
 }

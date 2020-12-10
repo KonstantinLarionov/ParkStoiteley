@@ -28,7 +28,7 @@ namespace ParkStroiteleyMVC.Controllers.Core.AdminCore
             IndexModel model = new IndexModel(
                 "ПАРК СТРОИТЕЛЕЙ",
                 "Одно из лучших мест времяпрепровождения в г.Орске",
-                Digger.GetContacts() ?? new Models.ObjectDTO.ContactsDTO() { PhoneNumber = +7000000 } );
+                Digger.GetContacts() ?? new Models.ObjectDTO.ContactsDTO() { PhoneNumber = "+7000000" } );
             try
             {
                 //IndexModel

@@ -54,7 +54,7 @@ namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
                 model = new AboutModel(
                           "О ПАРКЕ",
                           "Одно из лучших мест времяпрепровождения в г.Орске",
-                          Digger.GetContacts() ?? new Models.ObjectDTO.ContactsDTO() { PhoneNumber = +7000000 });
+                          Digger.GetContacts() ?? new Models.ObjectDTO.ContactsDTO() { PhoneNumber = "+7000000" });
            
             }
             catch (Exception ex)
@@ -68,7 +68,7 @@ namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
             IndexModel model = new IndexModel(
                 "ПАРК СТРОИТЕЛЕЙ",
                 "Одно из лучших мест времяпрепровождения в г.Орске",
-                Digger.GetContacts() ?? new Models.ObjectDTO.ContactsDTO() { PhoneNumber = +7000000 } );
+                Digger.GetContacts() ?? new Models.ObjectDTO.ContactsDTO() { PhoneNumber = "+7000000" } );
             try
             {
                 model.News = Digger.GetNewsPreview();
@@ -89,7 +89,7 @@ namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
               model = new MapModel(
               "КАРТА ПАРКА",
               "Здесь вы можете посмотреть карту всего парка и основные контакты.",
-              Digger.GetContacts() ?? new Models.ObjectDTO.ContactsDTO() { PhoneNumber = +7000000 });
+              Digger.GetContacts() ?? new Models.ObjectDTO.ContactsDTO() { PhoneNumber = "+7000000" });
         
             }
             catch(Exception ex)
@@ -106,7 +106,7 @@ namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
                 model = new NewsModel(
                 "НОВОСТИ ПАРКА",
                 "Последние новости и события нашего любимого парка.",
-                Digger.GetContacts() ?? new Models.ObjectDTO.ContactsDTO() { PhoneNumber = +7000000 });
+                Digger.GetContacts() ?? new Models.ObjectDTO.ContactsDTO() { PhoneNumber = "+7000000" });
                 model.News = Digger.GetNews(page);
             }
             catch (Exception ex)
@@ -124,7 +124,7 @@ namespace ParkStroiteleyMVC.Controllers.Core.HomeCore
                 model = new CardNewsModel(
                 "НОВОСТИ ПАРКА",
                 "Последние новости и события нашего любимого парка.",
-                Digger.GetContacts() ?? new Models.ObjectDTO.ContactsDTO() { PhoneNumber = +7000000 });
+                Digger.GetContacts() ?? new Models.ObjectDTO.ContactsDTO() { PhoneNumber = "+7000000" });
                 model.News = news;
             }
             catch (Exception ex)

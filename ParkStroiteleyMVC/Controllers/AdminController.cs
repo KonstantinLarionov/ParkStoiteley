@@ -43,6 +43,10 @@ namespace ParkStroiteleyMVC.Controllers
         {
             return View();
         }
+        public IActionResult Events()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
             return View();
@@ -50,6 +54,63 @@ namespace ParkStroiteleyMVC.Controllers
         public IActionResult Users()
         {
             return View();
+        }
+        public IActionResult Contacts()
+        {
+            var model = db.Contacts.FirstOrDefault();
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult Contacts(
+            string mainurlsite,
+            string phonenumber,
+            string phonenumberzam,
+            string email,
+            string linkvk,
+            string linkinst,
+            string linkfacebook,
+            string linkok,
+            string phonewhatapp,
+            string administratorfio,
+            string administratorfiozam)
+        {
+            ContactsDTO model = null;
+            if (db.Contacts.Any())
+            {
+                model = db.Contacts.FirstOrDefault();
+                model.MainURLSite = mainurlsite;
+                model.PhoneNumber = phonenumber;
+                model.PhoneNumberZam = phonenumberzam;
+                model.Email = email;
+                model.LinkVK = linkvk;
+                model.LinkInst = linkinst;
+                model.LinkFacebook = linkfacebook;
+                model.LinkOK = linkok;
+                model.PhoneWhatsUp = phonewhatapp;
+                model.AdministratorFIO = administratorfio;
+                model.AdministratorFIOZam = administratorfiozam;
+                db.SaveChanges();
+            }
+            else
+            {
+                model = new ContactsDTO
+                {
+                    MainURLSite = mainurlsite,
+                    PhoneNumber = phonenumber,
+                    PhoneNumberZam = phonenumberzam,
+                    Email = email,
+                    LinkVK = linkvk,
+                    LinkInst = linkinst,
+                    LinkFacebook = linkfacebook,
+                    LinkOK = linkok,
+                    PhoneWhatsUp = phonewhatapp,
+                    AdministratorFIO = administratorfio,
+                    AdministratorFIOZam = administratorfiozam
+                };
+                db.Contacts.Add(model);
+                db.SaveChanges();
+            }
+            return Redirect("/Admin/Contacts");
         }
         public IActionResult Gallery(Models.Enums.ImageGalleryType type)
         {
@@ -59,7 +120,7 @@ namespace ParkStroiteleyMVC.Controllers
             else
                 req = db.Gallery;
             var imgs = req.ToList();
-            return View(new ParkStroiteleyMVC.Models.ModelPages.GalleryModel { Imgs = imgs });
+            return View(new ParkStroiteleyMVC.Models.ModelPages.GalleryModel { Imgs = imgs, Type = type });
         }
         [HttpPost]
         public string Gallery(List<IFormFile> imgs, Models.Enums.ImageGalleryType type = 0)
@@ -87,6 +148,16 @@ namespace ParkStroiteleyMVC.Controllers
             {
                 return "{\"status\":\"error\", \"data\": \"" + exp.ToString() + "\"}";
             }
+        }
+        [HttpPost]
+        public string DelGallery(int? Id)
+        {
+            if (Id == null || Id < 0)
+                return "{\"status\":\"error\", \"data\": \"not found image with Id = " + Id.ToString() + "\"}";
+            var nw = db.Gallery.Where(f => f.Id == Id).FirstOrDefault();
+            db.Gallery.Remove(nw);
+            db.SaveChanges();
+            return "{\"status\":\"success\", \"data\":\"Изображение c Id = " + Id.ToString() + " успешно удалено, обновите страницу\"}";
         }
         public IActionResult News()
         {
@@ -174,14 +245,8 @@ namespace ParkStroiteleyMVC.Controllers
             db.SaveChanges();
             return "{\"status\":\"success\", \"data\":\"Новость c Id = " + Id.ToString() + " успешно удалена, обновите страницу\"}";
         }
-    public IActionResult Events()
-        {
-            return View();
-        }
-        public IActionResult Contacts()
-        {
-            return View();
-        }
+    
+        
         public Image Base64ToImage(string base64String)
         {
             // Convert base 64 string to byte[]

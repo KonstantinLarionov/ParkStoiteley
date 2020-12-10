@@ -9,8 +9,8 @@ namespace ParkStroiteleyMVC.Models.ObjectDTO
     {
         public int Id { get; set; }
         public string MainURLSite { get; set; }
-        public int PhoneNumber { get; set; }
-        public int PhoneNumberZam { get; set; }
+        public string PhoneNumber { get; set; }
+        public string PhoneNumberZam { get; set; }
         public string Email { get; set; }
         public string LinkVK { get; set; }
         public string LinkInst { get; set; }

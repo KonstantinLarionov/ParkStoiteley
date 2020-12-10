@@ -54,7 +54,37 @@ function mathsize(bytes){
     else
         return (t / 1024).toFixed(2) + " Gb";
 }
-$('.trash').on('click', function(){
-    confirm('Удалить нахОй эту фотку?');
-    console.log(this);
+$('.trash').on('click', function() {
+    var id_img = $(this).attr('id_image');
+    swal({
+        title: "Подтверждение",
+        text: "Удалить изображение?",
+        buttons: {
+            del: {
+                text: "Удалить"
+            },
+            cancel_: {
+                text: "Отмена"
+            }
+        }
+    }).then((value) => {
+        if (value === 'cancel_')
+            return;
+        if (value === 'del') {
+            $.ajax({
+                url: '/Admin/DelGallery',
+                method: 'post',
+                data: "Id=" + id_img,
+                success: function(data) {
+                    var a = JSON.parse(data);
+                    if (a.status == 'success') {
+                        swal('Успешно', a.data, 'success');
+                    }
+                    if (a.status == 'error') {
+                        swal('Ошибка', a.data, 'error');
+                    }
+                }
+            });
+        }
+    });
 });
