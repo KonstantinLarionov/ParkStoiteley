@@ -51,6 +51,43 @@ namespace ParkStroiteleyMVC.Controllers
         {
             return View();
         }
+        public IActionResult Gallery(Models.Enums.ImageGalleryType type)
+        {
+            IQueryable<GalleryDTO> req;
+            if (type > 0)
+                req = db.Gallery.Where(f => f.Type == type);
+            else
+                req = db.Gallery;
+            var imgs = req.ToList();
+            return View(new ParkStroiteleyMVC.Models.ModelPages.GalleryModel { Imgs = imgs });
+        }
+        [HttpPost]
+        public string Gallery(List<IFormFile> imgs, Models.Enums.ImageGalleryType type = 0)
+        {
+            try
+            {
+                foreach (var file in imgs)
+                {
+                    db.Gallery.Add(new GalleryDTO
+                    {
+                        NameFile = file.FileName,
+                        Type = type,
+                        DateAdd = DateTime.Now
+                    });
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/gallery", file.FileName);
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+                }
+                db.SaveChanges();
+                return "{\"status\":\"success\", \"data\":\"Загружено файлов: " + imgs.Count.ToString() + "\"}";
+            }
+            catch (Exception exp)
+            {
+                return "{\"status\":\"error\", \"data\": \"" + exp.ToString() + "\"}";
+            }
+        }
         public IActionResult News()
         {
             var news = db.News.Include(x => x.Blocks).ToList();
@@ -62,7 +99,7 @@ namespace ParkStroiteleyMVC.Controllers
             }
             return View(new NewsModel { Previews = previews });
         }
-       
+
         [HttpPost]
         public string News(string? news, List<string> blocks, List<IFormFile> imgs)
         {
@@ -96,21 +133,21 @@ namespace ParkStroiteleyMVC.Controllers
                     db.SaveChanges();
                     return "{\"status\":\"success\", \"data\":\"Новость добавлена, Блоков: " + myblocks.Count().ToString() + ", Файлов: " + imgs.Count().ToString() + ", обновите страницу\"}";
                 }
-                else 
+                else
                 {
                     var editnew = db.News.Where(f => f.Id == mynew.Id).Include(b => b.Blocks).FirstOrDefault();
                     if (editnew == null)
                     {
                         return "{\"status\":\"error\", \"data\":\"Новость c Id = " + mynew.Id.ToString() + " не найдена\"}";
                     }
-                    else 
+                    else
                     {
                         editnew.Header = mynew.Header;
                         editnew.DatePublish = mynew.DatePublish;
                         editnew.Type = mynew.Type;
                         editnew.Blocks = mynew.Blocks;
                         db.SaveChanges();
-                        return "{\"status\":\"success\", \"data\":\"Новость c Id = " + mynew.Id.ToString() + " успешно отредактирована, обновите страницу\"}"; ;
+                        return "{\"status\":\"success\", \"data\":\"Новость c Id = " + mynew.Id.ToString() + " успешно отредактирована, обновите страницу\"}";
                     }
                 }
             }
@@ -127,7 +164,17 @@ namespace ParkStroiteleyMVC.Controllers
             var nw = db.News.Where(f => f.Id == Id).Include(b => b.Blocks).FirstOrDefault();
             return JsonSerializer.Serialize(nw);
         }
-        public IActionResult Events()
+        [HttpPost]
+        public string DelNews(int? Id)
+        {
+            if (Id == null || Id < 0)
+                return "{\"status\":\"error\", \"data\": \"not found new with Id = " + Id.ToString() + "\"}";
+            var nw = db.News.Where(f => f.Id == Id).Include(b => b.Blocks).FirstOrDefault();
+            db.News.Remove(nw);
+            db.SaveChanges();
+            return "{\"status\":\"success\", \"data\":\"Новость c Id = " + Id.ToString() + " успешно удалена, обновите страницу\"}";
+        }
+    public IActionResult Events()
         {
             return View();
         }

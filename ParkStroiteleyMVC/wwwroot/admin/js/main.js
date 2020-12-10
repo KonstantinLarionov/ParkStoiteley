@@ -174,7 +174,6 @@ function sendnew() {
         data: myfiles,
         success: function (data) {
             var a = JSON.parse(data);
-            console.log(a);
             if (a.status == 'success') {
                 swal('Успешно', a.data, 'success');
             }
@@ -182,5 +181,38 @@ function sendnew() {
                 swal('Ошибка', a.data, 'error');
             }
         },
+    });
+}
+function delnew(id_new) {
+    swal({
+        title: "Подтверждение",
+        text: "Удалить новость?",
+        buttons: {
+            del: {
+                text: "Удалить"
+            },
+            cancel_: {
+                text: "Отмена"
+            }
+        }
+    }).then((value) => {
+        if (value === 'cancel_') 
+            return;
+        if (value === 'del') {
+            $.ajax({
+                url: '/Admin/DelNews',
+                method: 'post',
+                data: "Id=" + id_new,
+                success: function (data) {
+                    var a = JSON.parse(data);
+                    if (a.status == 'success') {
+                        swal('Успешно', a.data, 'success');
+                    }
+                    if (a.status == 'error') {
+                        swal('Ошибка', a.data, 'error');
+                    }
+                }
+            });
+        }
     });
 }

@@ -8,6 +8,8 @@ namespace ParkStroiteleyMVC.Models.Enums
 {
     public enum ImageGalleryType
     {
+        [EnumMember(Value = "Все")]
+        All,
         [EnumMember(Value = "Природа")]
         Nature,
         [EnumMember(Value = "Птицы")]
