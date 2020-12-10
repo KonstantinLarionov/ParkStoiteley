@@ -1,3 +1,15 @@
+$(window).on("load", function () {
+    setTimeout(function () { LoadOff() }, 2000);
+});
+function LoadOff() {
+    $("#preloader").attr("hidden", "");
+    $("#right").css("transform", "translateX(-100%)");
+    $("#left").css("transform", "translateX(100%)");
+    $(".item-door").css("0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 3px rgba(0,0,0,0.12), 0 4px 5px 0 rgba(0,0,0,0.20)");
+    setTimeout(function () {
+        $(".wrapper-slider").css("z-index", "0");
+    }, 1000);
+}
 $(document).ready(function () {
     $('#weusecookie').fadeIn(1000);
 
