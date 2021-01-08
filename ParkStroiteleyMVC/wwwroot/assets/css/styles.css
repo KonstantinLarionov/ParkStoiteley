@@ -93,16 +93,10 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    height: 70%;
-    width: 70%;
+    height: 100%;
+    width: 100%;
     z-index: 10;
-    /* padding-top: 2%; */
-    padding-left: 3%;
-    padding-right: 3%;
-    padding-bottom: 3%;
-    top: 15%;
-    left: 15%;
-    background-color: rgba(28, 28, 28, 0.7);
+    background-color: rgba(28, 28, 28, 0.5);
 
     animation: main-banner-text ease 3s;
     -webkit-animation: main-banner-text ease 3s;
