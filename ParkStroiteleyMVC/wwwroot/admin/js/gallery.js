@@ -11,8 +11,8 @@ $('#files').on('change', function(){ // находим в элементе ин�
         $('#addingfiles').append('<b>' + this.files[i].name + ' (' + mathsize(this.files[i].size) + ')</b><br>');
     }
 });
-function clearmodal(){
-    $('#phototype').find('option')[0].selected = true
+function clearmodal_j(){
+    //$('#phototype').find('option')[0].selected = true
     clearfiles();
 }
 function clearfiles() {
@@ -20,7 +20,7 @@ function clearfiles() {
     $('#files').val('');
 }
 function openmodal(){
-    clearmodal();
+    clearmodal_j();
     $('#modal').modal('show');
 }
 function send() {
